@@ -18,7 +18,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        flowCoverView = [[FlowCoverView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height)];
+        flowCoverView = [[FlowCoverView alloc] initWithFrame:CGRectMake(0, 0, 1024,768)];
        flowCoverView.backgroundColor = [UIColor blackColor];
         flowCoverView.delegate = self;
         // Custom initialization
@@ -79,7 +79,7 @@
 //    d = image%10;
 //    NSString *imagename = [NSString stringWithFormat:@"%@%d%d%d%d.jpg",imgStr,a,b,c,d];     
 //    return [UIImage imageNamed:imagename];
-    NSString *imagename = [NSString stringWithFormat:@"0_%d.jpg",image];
+    NSString *imagename = [NSString stringWithFormat:@"cover_%d.jpg",image];
     return [UIImage imageNamed:imagename];
 }
 

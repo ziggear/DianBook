@@ -119,13 +119,14 @@
 
 - (void) enterUI
 {
-//    //载入画图游戏
+    //载入画图游戏
 //    PainterViewController *patinter;
 //    patinter = [[PainterViewController alloc] initWithNibName:@"PainterViewController" bundle:nil];
 //    [[[[CCDirector sharedDirector] view] window] addSubview:patinter.view];
 
     CoverflowViewController *cf;
     cf = [[CoverflowViewController alloc] initWithNibName:@"CoverflowViewController" bundle:nil];
+    [cf setImageNumber:10 currentPage:1 imageName:@"cover_1.jpg"];
     [[[CCDirector sharedDirector] view] addSubview:cf.view];
     
 }

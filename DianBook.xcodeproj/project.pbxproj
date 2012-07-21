@@ -169,6 +169,8 @@
 		0753200515B94E3500794676 /* CoverflowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07531FFF15B94E3500794676 /* CoverflowViewController.xib */; };
 		0753200615B94E3500794676 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0753200115B94E3500794676 /* DataCache.m */; };
 		0753200715B94E3500794676 /* FlowCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0753200315B94E3500794676 /* FlowCoverView.m */; };
+		079EF8D915BA9A1900E2E81A /* cover_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 079EF8D715BA9A1900E2E81A /* cover_1.jpg */; };
+		079EF8DA15BA9A1900E2E81A /* cover_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 079EF8D815BA9A1900E2E81A /* cover_2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -478,6 +480,8 @@
 		0753200115B94E3500794676 /* DataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCache.m; sourceTree = "<group>"; };
 		0753200215B94E3500794676 /* FlowCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowCoverView.h; sourceTree = "<group>"; };
 		0753200315B94E3500794676 /* FlowCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowCoverView.m; sourceTree = "<group>"; };
+		079EF8D715BA9A1900E2E81A /* cover_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cover_1.jpg; path = covers/cover_1.jpg; sourceTree = "<group>"; };
+		079EF8D815BA9A1900E2E81A /* cover_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cover_2.png; path = covers/cover_2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1009,6 +1013,7 @@
 		07531FFC15B94E3500794676 /* coverflow */ = {
 			isa = PBXGroup;
 			children = (
+				0759992E15BA4F0200941D00 /* covers */,
 				07531FFD15B94E3500794676 /* CoverflowViewController.h */,
 				07531FFE15B94E3500794676 /* CoverflowViewController.m */,
 				07531FFF15B94E3500794676 /* CoverflowViewController.xib */,
@@ -1019,6 +1024,15 @@
 			);
 			path = coverflow;
 			sourceTree = SOURCE_ROOT;
+		};
+		0759992E15BA4F0200941D00 /* covers */ = {
+			isa = PBXGroup;
+			children = (
+				079EF8D715BA9A1900E2E81A /* cover_1.jpg */,
+				079EF8D815BA9A1900E2E81A /* cover_2.png */,
+			);
+			name = covers;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -1112,6 +1126,8 @@
 				07531FF215B9342700794676 /* preview_bg.png in Resources */,
 				07531FFB15B9388500794676 /* coverflow.png in Resources */,
 				0753200515B94E3500794676 /* CoverflowViewController.xib in Resources */,
+				079EF8D915BA9A1900E2E81A /* cover_1.jpg in Resources */,
+				079EF8DA15BA9A1900E2E81A /* cover_2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
