@@ -20,8 +20,8 @@
 
 //导入所有页面类
 //在每个Page里面用@class Page1;来说明
-#import "Page1.h"
-#import "Page2.h"
+//#import "Page1.h"
+//#import "Page2.h"
 
 #pragma mark - HelloWorldLayer
 
