@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "FlowCoverView.h"
-#define CBAppDelegate ((AppDelegate*)[[UIApplication sharedApplication] delegate])
+
+
+//#define CBAppDelegate ((AppDelegate*)[[UIApplication sharedApplication] delegate])
 @interface CoverflowViewController : UIViewController <FlowCoverViewDelegate>{
     FlowCoverView *flowCoverView;
     int imageNumber,currentPage;

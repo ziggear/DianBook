@@ -8,8 +8,6 @@
 
 #import "Page2.h"
 
-@class Page1;
-@class Page2;
 
 @implementation Page2
 

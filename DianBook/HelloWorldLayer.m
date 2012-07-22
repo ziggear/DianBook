@@ -72,7 +72,12 @@
         coverFLow.tag = 3;
         [self addChild:coverFLow];
         [movableSprites addObject:coverFLow];
-
+        
+        CCSprite *arcade = [CCSprite spriteWithFile:@"arcade.png"];
+        arcade.position = ccp(winSize.width * 0.1, winSize.height * 0.1);
+        arcade.tag = 4;
+        [self addChild:arcade];
+        [movableSprites addObject:arcade];
         
         //接受点击
         [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
@@ -117,7 +122,7 @@
     //[[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 
-- (void) enterUI
+- (void) enterCoverFlow
 {
     //载入画图游戏
 //    PainterViewController *patinter;
@@ -129,6 +134,14 @@
     [cf setImageNumber:10 currentPage:1 imageName:@"cover_1.jpg"];
     [[[CCDirector sharedDirector] view] addSubview:cf.view];
     
+}
+
+- (void) enterGame 
+{
+//载入画图游戏
+    PainterViewController *patinter;
+    patinter = [[PainterViewController alloc] initWithNibName:@"PainterViewController" bundle:nil];
+    [[[[CCDirector sharedDirector] view] window] addSubview:patinter.view];    
 }
 
 #pragma mark Touch matics
@@ -160,7 +173,12 @@
     
     if(selSprite.tag == 3){
         NSLog(@"touched middle");
-        [self enterUI];
+        [self enterCoverFlow];
+    }
+    
+    if(selSprite.tag == 4){
+        NSLog(@"touched game");
+        [self enterGame];
     }
     
 }

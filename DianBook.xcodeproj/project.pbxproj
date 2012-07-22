@@ -133,8 +133,6 @@
 		0724423415B8257300C74F31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0724423315B8257300C74F31 /* AppDelegate.m */; };
 		0724423715B8257300C74F31 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0724423615B8257300C74F31 /* HelloWorldLayer.m */; };
 		0724423A15B8257300C74F31 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0724423915B8257300C74F31 /* IntroLayer.m */; };
-		0724424315B82F6500C74F31 /* bg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0724424115B82F6500C74F31 /* bg1.jpg */; };
-		0724424415B82F6500C74F31 /* 文字.png in Resources */ = {isa = PBXBuildFile; fileRef = 0724424215B82F6500C74F31 /* 文字.png */; };
 		0725E24315B8E9E0007D2398 /* bt01.png in Resources */ = {isa = PBXBuildFile; fileRef = 0725E24115B8E9E0007D2398 /* bt01.png */; };
 		0725E24415B8E9E0007D2398 /* bt02.png in Resources */ = {isa = PBXBuildFile; fileRef = 0725E24215B8E9E0007D2398 /* bt02.png */; };
 		0725E24715B8F989007D2398 /* Page1.m in Sources */ = {isa = PBXBuildFile; fileRef = 0725E24615B8F988007D2398 /* Page1.m */; };
@@ -170,7 +168,8 @@
 		0753200615B94E3500794676 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0753200115B94E3500794676 /* DataCache.m */; };
 		0753200715B94E3500794676 /* FlowCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0753200315B94E3500794676 /* FlowCoverView.m */; };
 		079EF8D915BA9A1900E2E81A /* cover_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 079EF8D715BA9A1900E2E81A /* cover_1.jpg */; };
-		079EF8DA15BA9A1900E2E81A /* cover_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 079EF8D815BA9A1900E2E81A /* cover_2.png */; };
+		079EF8DC15BACEB500E2E81A /* cover_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 079EF8DB15BACEB500E2E81A /* cover_2.jpg */; };
+		079EF8DE15BAD0F500E2E81A /* arcade.png in Resources */ = {isa = PBXBuildFile; fileRef = 079EF8DD15BAD0F500E2E81A /* arcade.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -436,8 +435,6 @@
 		0724423615B8257300C74F31 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		0724423815B8257300C74F31 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		0724423915B8257300C74F31 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
-		0724424115B82F6500C74F31 /* bg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg1.jpg; sourceTree = "<group>"; };
-		0724424215B82F6500C74F31 /* 文字.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "文字.png"; sourceTree = "<group>"; };
 		0725E24115B8E9E0007D2398 /* bt01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt01.png; sourceTree = "<group>"; };
 		0725E24215B8E9E0007D2398 /* bt02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt02.png; sourceTree = "<group>"; };
 		0725E24515B8F988007D2398 /* Page1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page1.h; sourceTree = "<group>"; };
@@ -481,7 +478,8 @@
 		0753200215B94E3500794676 /* FlowCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowCoverView.h; sourceTree = "<group>"; };
 		0753200315B94E3500794676 /* FlowCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowCoverView.m; sourceTree = "<group>"; };
 		079EF8D715BA9A1900E2E81A /* cover_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cover_1.jpg; path = covers/cover_1.jpg; sourceTree = "<group>"; };
-		079EF8D815BA9A1900E2E81A /* cover_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cover_2.png; path = covers/cover_2.png; sourceTree = "<group>"; };
+		079EF8DB15BACEB500E2E81A /* cover_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cover_2.jpg; path = covers/cover_2.jpg; sourceTree = "<group>"; };
+		079EF8DD15BAD0F500E2E81A /* arcade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arcade.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -923,8 +921,6 @@
 		0724424015B82F6500C74F31 /* Page1 */ = {
 			isa = PBXGroup;
 			children = (
-				0724424115B82F6500C74F31 /* bg1.jpg */,
-				0724424215B82F6500C74F31 /* 文字.png */,
 			);
 			path = Page1;
 			sourceTree = SOURCE_ROOT;
@@ -932,6 +928,7 @@
 		0725E24015B8E9E0007D2398 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				079EF8DD15BAD0F500E2E81A /* arcade.png */,
 				07531FFA15B9388500794676 /* coverflow.png */,
 				0725E24115B8E9E0007D2398 /* bt01.png */,
 				0725E24215B8E9E0007D2398 /* bt02.png */,
@@ -1029,7 +1026,7 @@
 			isa = PBXGroup;
 			children = (
 				079EF8D715BA9A1900E2E81A /* cover_1.jpg */,
-				079EF8D815BA9A1900E2E81A /* cover_2.png */,
+				079EF8DB15BACEB500E2E81A /* cover_2.jpg */,
 			);
 			name = covers;
 			sourceTree = "<group>";
@@ -1098,8 +1095,6 @@
 				072440D115B8256F00C74F31 /* Icon@2x.png in Resources */,
 				072440D415B8256F00C74F31 /* iTunesArtwork in Resources */,
 				0724421215B8257300C74F31 /* ChangeLog in Resources */,
-				0724424315B82F6500C74F31 /* bg1.jpg in Resources */,
-				0724424415B82F6500C74F31 /* 文字.png in Resources */,
 				0725E24315B8E9E0007D2398 /* bt01.png in Resources */,
 				0725E24415B8E9E0007D2398 /* bt02.png in Resources */,
 				07531FDB15B9342700794676 /* ColorPicker_iPad.xib in Resources */,
@@ -1127,7 +1122,8 @@
 				07531FFB15B9388500794676 /* coverflow.png in Resources */,
 				0753200515B94E3500794676 /* CoverflowViewController.xib in Resources */,
 				079EF8D915BA9A1900E2E81A /* cover_1.jpg in Resources */,
-				079EF8DA15BA9A1900E2E81A /* cover_2.png in Resources */,
+				079EF8DC15BACEB500E2E81A /* cover_2.jpg in Resources */,
+				079EF8DE15BAD0F500E2E81A /* arcade.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,9 @@
 #import "CoverflowViewController.h"
 #import "AppDelegate.h"
 //#import "ViewController.h"
+#import "HelloWorldLayer.h"
+
+@class Page2;
 
 @implementation CoverflowViewController
 @synthesize flowCoverView,label,imgStr;
@@ -94,8 +97,9 @@
         image++;
     }
     label.text = [NSString stringWithFormat:@"第%d页/共%d页",image+1,imageNumber];
-    //[(ViewController*)CBAppDelegate.viewController changeCurrentPageIndex:image];
-    //[(ViewController*)CBAppDelegate.viewController  dismissModalViewControllerAnimated:YES];
+    [self.view removeFromSuperview];
+    [self.view release];
+   [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.01f scene:[Page2 scene] withColor:ccWHITE]];
 	NSLog(@"Selected Index %d",image);
 }
 
