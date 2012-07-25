@@ -873,7 +873,7 @@ CGContextRef CreateARGBBitmapContext (int pixelsWide, int pixelsHigh)
 		static NSCharacterSet *charSet = nil;
 		if(!charSet) 
 		{
-			charSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789abcdefABCDEF"] invertedSet] retain];
+			charSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789abcdefABCDEF"] invertedSet] ;
 		}
 		NSRange location = [string rangeOfCharacterFromSet:charSet];
 		return (location.location == NSNotFound);
@@ -884,7 +884,7 @@ CGContextRef CreateARGBBitmapContext (int pixelsWide, int pixelsHigh)
 		static NSCharacterSet *charSet = nil;
 		if(!charSet) 
 		{
-			charSet = [[[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet] retain];
+			charSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet] ;
 		}
 		NSRange location = [string rangeOfCharacterFromSet:charSet];
 		return (location.location == NSNotFound);
@@ -1517,7 +1517,7 @@ CGContextRef CreateARGBBitmapContext (int pixelsWide, int pixelsHigh)
 	self.circleView=nil;
 	
 	self.popOver=nil;
-	[super dealloc];
+	//[super dealloc];
 }
 
 @end

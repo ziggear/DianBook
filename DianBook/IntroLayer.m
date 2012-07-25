@@ -61,6 +61,6 @@
 
 -(void) makeTransition:(ccTime)dt
 {
-	[[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:0.1 scene:[Page1 scene] withColor:ccWHITE]];
+	[[CCDirector sharedDirector] pushScene:[Page1 scene]];
 }
 @end

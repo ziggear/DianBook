@@ -58,7 +58,7 @@ struct rgbhsvColor
 }
 
 @property (nonatomic, retain) UIPopoverController *popOver;
-@property (nonatomic, assign) id<ColorPickerDelegate> delegate;
+@property (nonatomic, strong) id<ColorPickerDelegate> delegate;
 
 @property (nonatomic, retain) IBOutlet UIImageView *previewView;
 @property (nonatomic, retain) IBOutlet UIImageView *previewBorderView;

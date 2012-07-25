@@ -38,16 +38,11 @@
 
 @property(nonatomic, readwrite) CGPoint location;
 @property(nonatomic, readwrite) CGPoint previousLocation;
-
+-(void) save;
 - (void)erase;
 - (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
 -(void)changeBlendMode:(BOOL)mode;
 - (void)setBrushTypeWithtag:(int)tag;
 -(void)buildBrushtexturewithfile:(NSString*)fileName;
 -(void)setBrushSize:(float)size;
-
-
--(void)captureToPhotoAlbum;
--(void)setBg;
-
 @end

@@ -40,20 +40,25 @@
 		context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
 		
 		if (!context || ![EAGLContext setCurrentContext:context]) {
-			[self release];
+		//	[self release];
 			return nil;
 		}
-       // self.frame = CGRectMake(0, 0, 768, 1024);
+      // self.bounds = CGRectMake(175,145, 720, 490);
         // Set the view's scale factor
 		self.contentScaleFactor = 1.0;
-	
+        
+       self.layer.frame=CGRectMake(175,145, 720, 490);	
 		// Setup OpenGL states
 		glMatrixMode(GL_PROJECTION);
 		CGRect frame = self.bounds;
+        
+     //   CGRect frame=CGRectMake(175,145, 720, 490);
 		CGFloat scale = self.contentScaleFactor;
 		// Setup the view port in Pixels
 		glOrthof(0, frame.size.width * scale, 0, frame.size.height * scale, -1, 1);
 		glViewport(0, 0, frame.size.width * scale, frame.size.height * scale);
+             
+        
 		glMatrixMode(GL_MODELVIEW);
 		
 		glDisable(GL_DITHER);
@@ -72,7 +77,7 @@
 		
 		// Make sure to start with a cleared buffer
 		needsErase = YES;
-        [self setBg];
+             
         self.layer.masksToBounds = YES;  
         self.layer.borderWidth  =5;  
         self.layer.borderColor= [[UIColor orangeColor] CGColor];         
@@ -80,47 +85,9 @@
 	}
 	return self;
 }
--(void)setBg {
-    CGImageRef		bg;
-	CGContextRef	bgContext;
-	GLubyte			*bgData;
-    size_t			width, height;
-    // Create a texture from an image
-    // First create a UIImage object from the data in a image file, and then extract the Core Graphics image
-    bg = [UIImage imageNamed:@"bg1.jpg"].CGImage;
-    // Get the width and height of the image
-    width = CGImageGetWidth(bg);
-    height = CGImageGetHeight(bg);
-    // Texture dimensions must be a power of 2. If you write an application that allows users to supply an image,
-    // you'll want to add code that checks the dimensions and takes appropriate action if they are not a power of 2.
-    
-    // Make sure the image exists
-    if(bg) 
-    {
-        // Allocate  memory needed for the bitmap context
-        bgData = (GLubyte *) calloc(width * height * 4, sizeof(GLubyte));
-        // Use  the bitmatp creation function provided by the Core Graphics framework. 
-        bgContext = CGBitmapContextCreate(bgData, width, height, 8, width * 4, CGImageGetColorSpace(bg), kCGImageAlphaPremultipliedLast);
-        // After you create the context, you can draw the  image to the context.
-        CGContextDrawImage(bgContext, CGRectMake(0.0, 0.0, (CGFloat)width, (CGFloat)height), bg);
-        // You don't need the context at this point, so you need to release it to avoid memory leaks.
-        CGContextRelease(bgContext);
-        // Use OpenGL ES to generate a name for the texture.
-        glGenTextures(1, &backTexture);
-        // Bind the texture name. 
-        glBindTexture(GL_TEXTURE_2D, backTexture);
-        // Set the texture parameters to use a minifying filter and a linear filer (weighted average)
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        // Specify a 2D texture image, providing the a pointer to the image data in memory
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, bgData);
-        // Release  the image data; it's no longer needed
-        free(bgData);
-    }   
-    
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, backTexture, 0);
 
-}
+
+
 -(void)buildBrushtexturewithfile:(NSString*)fileName
 {
     CGImageRef		brushImage;
@@ -131,8 +98,10 @@
     // First create a UIImage object from the data in a image file, and then extract the Core Graphics image
     brushImage = [UIImage imageNamed:fileName].CGImage;
     // Get the width and height of the image
-    width = CGImageGetWidth(brushImage);
-    height = CGImageGetHeight(brushImage);
+    
+   width = CGImageGetWidth(brushImage);
+  height = CGImageGetHeight(brushImage);
+
     // Texture dimensions must be a power of 2. If you write an application that allows users to supply an image,
     // you'll want to add code that checks the dimensions and takes appropriate action if they are not a power of 2.
     
@@ -140,11 +109,15 @@
     if(brushImage) 
     {
         // Allocate  memory needed for the bitmap context
-        brushData = (GLubyte *) calloc(width * height * 4, sizeof(GLubyte));
+      brushData = (GLubyte *) calloc(width * height * 4, sizeof(GLubyte));
+        
         // Use  the bitmatp creation function provided by the Core Graphics framework. 
+
+        
         brushContext = CGBitmapContextCreate(brushData, width, height, 8, width * 4, CGImageGetColorSpace(brushImage), kCGImageAlphaPremultipliedLast);
         // After you create the context, you can draw the  image to the context.
         CGContextDrawImage(brushContext, CGRectMake(0.0, 0.0, (CGFloat)width, (CGFloat)height), brushImage);
+            
         // You don't need the context at this point, so you need to release it to avoid memory leaks.
         CGContextRelease(brushContext);
         // Use OpenGL ES to generate a name for the texture.
@@ -241,8 +214,8 @@
 		[EAGLContext setCurrentContext:nil];
 	}
 	
-	[context release];
-	[super dealloc];
+//	[context release];
+	//[super dealloc];
 }
 
 // Erases the screen
@@ -406,56 +379,4 @@
     }
     [self buildBrushtexturewithfile:brushfile];
 }
-
-#pragma mark GL screenshot
-
--(UIImage *) glToUIImage {
-    NSInteger myDataLength = 1024 * 768 * 4;
-    
-    // allocate array and read pixels into it.
-    //glReadBuffer(GL_BACK);
-    
-    //glEnable(GL_BLEND);
-    //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    
-    GLubyte *buffer = (GLubyte *) malloc(myDataLength);
-    glReadPixels(0, 0, 1024, 768, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
-    
-    // gl renders "upside down" so swap top to bottom into new array.
-    // there's gotta be a better way, but this works.
-    GLubyte *buffer2 = (GLubyte *) malloc(myDataLength);
-    for(int y = 0; y <768; y++)
-    {
-        for(int x = 0; x <1024 * 4; x++)
-        {
-            buffer2[(767 - y) * 1024 * 4 + x] = buffer[y * 4 * 1024 + x];
-        }
-    }
-    // AppTreeHust@gmail.com 
-    // make data provider with data.
-    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer2, myDataLength, NULL);
-    
-    // prep the ingredients
-    int bitsPerComponent = 8;
-    int bitsPerPixel = 32;
-    int bytesPerRow = 4 * 1024;
-    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault;
-    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
-    
-    // make the cgimage
-    CGImageRef imageRef = CGImageCreate(1024, 768, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
-    
-    // then make the uiimage from that
-    UIImage *myImage = [UIImage imageWithCGImage:imageRef];
-    return myImage;
-}
-
-
--(void)captureToPhotoAlbum {
-    UIImage *image = [self glToUIImage];
-    UIImageWriteToSavedPhotosAlbum(image, self, nil, nil);
-}
-
-
 @end

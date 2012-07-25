@@ -6,26 +6,42 @@
 //  Copyright 111 2012. All rights reserved.
 //
 
-
 #import <GameKit/GameKit.h>
+#import "SimpleAudioEngine.h"
+#import "PainterViewController.h"
+#import "CoverflowViewController.h"
 #import "cocos2d.h"
-#import "ExtSprite.h"
 #import "Assist.h"
+#import "Animate.h"
 
-@class Page1;
-@class Page2;
+//每添加一页在此加入一个@class PageX
+@class  Page1;
+@class  Page2;
+@class  Page3;
+@class  Page4;
+@class  Page5;
+@class  Page6;
+@class  Page7;
+@class  Page8;
+@class  Page9;
+@class  Page10;
+@class  Page11;
 
 
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
 {
-    ExtSprite * selSprite;
+    CCSprite * selSprite;
     NSMutableArray * movableSprites;
-    int         thisPageCount;         //本页的页数，初始化为零 表示封面
+    int         thisPageCount;         //本页的页数，初始化为零 表示封面    
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
 +(CCScene *) scene;
-
+-(void) nextPage:(int)thisPageCount;
+-(void) prevPage:(int)thisPageCount;
+-(void)selectSpriteOnPage:(CGPoint)touchLocation;
+- (void) enterCoverFlow;
+- (void) enterGame;
 
 @end
