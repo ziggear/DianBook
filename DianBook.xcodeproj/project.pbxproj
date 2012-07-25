@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		070257BE15BC715600FD1F9B /* bg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 070257BD15BC715600FD1F9B /* bg1.jpg */; };
 		071E302515BC6D0F00A20F84 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 071E302415BC6D0F00A20F84 /* Default-Landscape~ipad.png */; };
-		071E302715BC6EEB00A20F84 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 071E302615BC6EEB00A20F84 /* icon.png */; };
 		072440A915B8256F00C74F31 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072440A815B8256F00C74F31 /* QuartzCore.framework */; };
 		072440AB15B8256F00C74F31 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072440AA15B8256F00C74F31 /* OpenGLES.framework */; };
 		072440AD15B8256F00C74F31 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072440AC15B8256F00C74F31 /* OpenAL.framework */; };
@@ -162,15 +161,17 @@
 		0753200515B94E3500794676 /* CoverflowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07531FFF15B94E3500794676 /* CoverflowViewController.xib */; };
 		0753200615B94E3500794676 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0753200115B94E3500794676 /* DataCache.m */; };
 		0753200715B94E3500794676 /* FlowCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0753200315B94E3500794676 /* FlowCoverView.m */; };
-		079EF8D915BA9A1900E2E81A /* cover_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 079EF8D715BA9A1900E2E81A /* cover_1.jpg */; };
-		079EF8DC15BACEB500E2E81A /* cover_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 079EF8DB15BACEB500E2E81A /* cover_2.jpg */; };
+		079EF8D915BA9A1900E2E81A /* cover_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 079EF8D715BA9A1900E2E81A /* cover_0.jpg */; };
+		079EF8DC15BACEB500E2E81A /* cover_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 079EF8DB15BACEB500E2E81A /* cover_1.jpg */; };
 		079EF8DE15BAD0F500E2E81A /* arcade.png in Resources */ = {isa = PBXBuildFile; fileRef = 079EF8DD15BAD0F500E2E81A /* arcade.png */; };
+		07A63D2B15BE66C400F258C5 /* Assist.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A63D2A15BE66C400F258C5 /* Assist.m */; };
+		07A63D3515BE73AF00F258C5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07A63D3415BE73AF00F258C5 /* icon.png */; };
+		07AF46F515BDBBC2005678A9 /* ExtSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF46F415BDBBC2005678A9 /* ExtSprite.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		070257BD15BC715600FD1F9B /* bg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg1.jpg; sourceTree = "<group>"; };
 		071E302415BC6D0F00A20F84 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
-		071E302615BC6EEB00A20F84 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
 		072440A415B8256F00C74F31 /* DianBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DianBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		072440A815B8256F00C74F31 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		072440AA15B8256F00C74F31 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -467,9 +468,14 @@
 		0753200115B94E3500794676 /* DataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCache.m; sourceTree = "<group>"; };
 		0753200215B94E3500794676 /* FlowCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowCoverView.h; sourceTree = "<group>"; };
 		0753200315B94E3500794676 /* FlowCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowCoverView.m; sourceTree = "<group>"; };
-		079EF8D715BA9A1900E2E81A /* cover_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cover_1.jpg; path = covers/cover_1.jpg; sourceTree = "<group>"; };
-		079EF8DB15BACEB500E2E81A /* cover_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cover_2.jpg; path = covers/cover_2.jpg; sourceTree = "<group>"; };
+		079EF8D715BA9A1900E2E81A /* cover_0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cover_0.jpg; path = covers/cover_0.jpg; sourceTree = "<group>"; };
+		079EF8DB15BACEB500E2E81A /* cover_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cover_1.jpg; path = covers/cover_1.jpg; sourceTree = "<group>"; };
 		079EF8DD15BAD0F500E2E81A /* arcade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arcade.png; sourceTree = "<group>"; };
+		07A63D2915BE66C300F258C5 /* Assist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assist.h; sourceTree = "<group>"; };
+		07A63D2A15BE66C400F258C5 /* Assist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Assist.m; sourceTree = "<group>"; };
+		07A63D3415BE73AF00F258C5 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		07AF46F315BDBBC2005678A9 /* ExtSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtSprite.h; sourceTree = "<group>"; };
+		07AF46F415BDBBC2005678A9 /* ExtSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtSprite.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,12 +534,16 @@
 		072440BA15B8256F00C74F31 /* DianBook */ = {
 			isa = PBXGroup;
 			children = (
+				07A63D2915BE66C300F258C5 /* Assist.h */,
+				07A63D2A15BE66C400F258C5 /* Assist.m */,
 				0724423215B8257300C74F31 /* AppDelegate.h */,
 				0724423315B8257300C74F31 /* AppDelegate.m */,
 				0724423515B8257300C74F31 /* HelloWorldLayer.h */,
 				0724423615B8257300C74F31 /* HelloWorldLayer.m */,
 				0724423815B8257300C74F31 /* IntroLayer.h */,
 				0724423915B8257300C74F31 /* IntroLayer.m */,
+				07AF46F315BDBBC2005678A9 /* ExtSprite.h */,
+				07AF46F415BDBBC2005678A9 /* ExtSprite.m */,
 				07531FB915B9340A00794676 /* Games */,
 				0725E24815B8F992007D2398 /* Pages */,
 				072440BB15B8256F00C74F31 /* Resources */,
@@ -548,8 +558,8 @@
 			children = (
 				0725E24015B8E9E0007D2398 /* Buttons */,
 				0724424015B82F6500C74F31 /* Page1 */,
-				071E302615BC6EEB00A20F84 /* icon.png */,
 				071E302415BC6D0F00A20F84 /* Default-Landscape~ipad.png */,
+				07A63D3415BE73AF00F258C5 /* icon.png */,
 				072440C015B8256F00C74F31 /* fps_images.png */,
 				072440C215B8256F00C74F31 /* fps_images-hd.png */,
 				072440C415B8256F00C74F31 /* fps_images-ipadhd.png */,
@@ -1010,8 +1020,8 @@
 		0759992E15BA4F0200941D00 /* covers */ = {
 			isa = PBXGroup;
 			children = (
-				079EF8D715BA9A1900E2E81A /* cover_1.jpg */,
-				079EF8DB15BACEB500E2E81A /* cover_2.jpg */,
+				079EF8D715BA9A1900E2E81A /* cover_0.jpg */,
+				079EF8DB15BACEB500E2E81A /* cover_1.jpg */,
 			);
 			name = covers;
 			sourceTree = "<group>";
@@ -1098,12 +1108,12 @@
 				07531FF215B9342700794676 /* preview_bg.png in Resources */,
 				07531FFB15B9388500794676 /* coverflow.png in Resources */,
 				0753200515B94E3500794676 /* CoverflowViewController.xib in Resources */,
-				079EF8D915BA9A1900E2E81A /* cover_1.jpg in Resources */,
-				079EF8DC15BACEB500E2E81A /* cover_2.jpg in Resources */,
+				079EF8D915BA9A1900E2E81A /* cover_0.jpg in Resources */,
+				079EF8DC15BACEB500E2E81A /* cover_1.jpg in Resources */,
 				079EF8DE15BAD0F500E2E81A /* arcade.png in Resources */,
 				071E302515BC6D0F00A20F84 /* Default-Landscape~ipad.png in Resources */,
-				071E302715BC6EEB00A20F84 /* icon.png in Resources */,
 				070257BE15BC715600FD1F9B /* bg1.jpg in Resources */,
+				07A63D3515BE73AF00F258C5 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1226,6 +1236,8 @@
 				0753200415B94E3500794676 /* CoverflowViewController.m in Sources */,
 				0753200615B94E3500794676 /* DataCache.m in Sources */,
 				0753200715B94E3500794676 /* FlowCoverView.m in Sources */,
+				07AF46F515BDBBC2005678A9 /* ExtSprite.m in Sources */,
+				07A63D2B15BE66C400F258C5 /* Assist.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1276,6 +1288,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Guorui Chen (32WF9S6657)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Guorui Chen (32WF9S6657)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1288,6 +1302,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7BBDF779-5F53-4AD6-8B34-962A352879CF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7BBDF779-5F53-4AD6-8B34-962A352879CF";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1297,6 +1313,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Guorui Chen (32WF9S6657)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Guorui Chen (32WF9S6657)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DianBook/Prefix.pch;
@@ -1308,6 +1326,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7BBDF779-5F53-4AD6-8B34-962A352879CF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7BBDF779-5F53-4AD6-8B34-962A352879CF";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

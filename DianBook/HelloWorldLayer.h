@@ -8,10 +8,9 @@
 
 
 #import <GameKit/GameKit.h>
-
-
-// When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
+#import "ExtSprite.h"
+#import "Assist.h"
 
 @class Page1;
 @class Page2;
@@ -20,12 +19,13 @@
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
 {
-    CCSprite * selSprite;
+    ExtSprite * selSprite;
     NSMutableArray * movableSprites;
     int         thisPageCount;         //本页的页数，初始化为零 表示封面
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
 +(CCScene *) scene;
+
 
 @end

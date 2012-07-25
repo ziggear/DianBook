@@ -35,10 +35,19 @@
 
 - (id) init {
     if(self = [super init]) {
+        thisPageCount = 2;
         //第二页内容
         
     }
     return self;
+}
+
+- (void) SpriteMove {
+    
+}
+
+- (void) dealloc {
+    [super dealloc];
 }
 
 @end

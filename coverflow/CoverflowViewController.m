@@ -99,7 +99,23 @@
     label.text = [NSString stringWithFormat:@"第%d页/共%d页",image+1,imageNumber];
     [self.view removeFromSuperview];
     [self.view release];
-   [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.01f scene:[Page2 scene] withColor:ccWHITE]];
+    
+    
+    [[CCDirector sharedDirector] startAnimation];
+    
+    //根据图片选择页面
+    switch (image) {
+        
+        case 2:
+            [[CCDirector sharedDirector] replaceScene:[Page1 scene]];
+            break;
+        case 3:
+            [[CCDirector sharedDirector] replaceScene:[Page2 scene]];
+            break;
+        default:
+            break;
+    }
+    
 	NSLog(@"Selected Index %d",image);
 }
 

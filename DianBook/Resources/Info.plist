@@ -12,7 +12,7 @@
 	<string></string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Icon.png</string>
+		<string>icon.png</string>
 		<string>Icon@2x.png</string>
 		<string>book.png</string>
 		<string>Icon-Small-50.png</string>
@@ -25,7 +25,7 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>Icon.png</string>
+				<string>icon.png</string>
 				<string>Icon@2x.png</string>
 				<string>book.png</string>
 				<string>Icon-Small-50.png</string>

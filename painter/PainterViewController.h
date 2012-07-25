@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ColorPicker.h"
 
+#import <OpenGLES/EAGL.h>
+#import <OpenGLES/ES1/gl.h>
+#import <OpenGLES/ES1/glext.h>
+
 @class PaintingView;
 @interface PainterViewController : UIViewController<UIPopoverControllerDelegate,ColorPickerDelegate>
 {
@@ -26,4 +30,7 @@
 // the needed delegate methods for the ColorPicker
 - (void)colorPicker:(ColorPicker *)colorPicker didSelectColorWithTag:(NSInteger)tag Red: (NSUInteger)red Green:(NSUInteger)green Blue:(NSUInteger)blue Alpha:(NSUInteger)alpha;
 - (void)colorPicker:(ColorPicker *)colorPicker didCancelWithTag:(NSInteger)tag;
+
+
+-(void)captureToPhotoAlbum;
 @end

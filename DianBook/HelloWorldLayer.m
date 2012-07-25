@@ -18,10 +18,6 @@
 #import "PainterViewController.h"
 #import "CoverflowViewController.h"
 
-//导入所有页面类
-//在每个Page里面用@class Page1;来说明
-//#import "Page1.h"
-//#import "Page2.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -47,41 +43,9 @@
 // on "init" you need to initialize your instance
 -(id) init
 {
-	if((self = [super init])) {        
-        //获取窗口大小
-        CGSize winSize = [CCDirector sharedDirector].winSize;
-        
-        //初始化按钮数组
-        //左翻页tag = 1 ，右翻页tag = 2 。在 selectSpriteForTouch 函数中判断用
-        movableSprites = [[NSMutableArray alloc] init];
-
-        CCSprite *buttonLeft = [CCSprite spriteWithFile:@"bt01.png"];
-        buttonLeft.position = ccp(winSize.width * 0.1, winSize.height * 0.9);
-        buttonLeft.tag = 1;
-        [self addChild:buttonLeft];
-        [movableSprites addObject:buttonLeft];
-        
-        CCSprite *buttonRight = [CCSprite spriteWithFile:@"bt02.png"];
-        buttonRight.position = ccp(winSize.width * 0.9, winSize.height * 0.9);
-        buttonRight.tag = 2;
-        [self addChild:buttonRight];
-        [movableSprites addObject:buttonRight];
-        
-        CCSprite *coverFLow = [CCSprite spriteWithFile:@"coverflow.png"];
-        coverFLow.position = ccp(winSize.width * 0.5, winSize.height * 0.9);
-        coverFLow.tag = 3;
-        [self addChild:coverFLow];
-        [movableSprites addObject:coverFLow];
-        
-        CCSprite *arcade = [CCSprite spriteWithFile:@"arcade.png"];
-        arcade.position = ccp(winSize.width * 0.1, winSize.height * 0.1);
-        arcade.tag = 4;
-        [self addChild:arcade];
-        [movableSprites addObject:arcade];
-        
-        //接受点击
+    if((self = [super init])) {       
+        //设置接受点击
         [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
-        
         //设置初始页码为零
         thisPageCount = 0;
     }
@@ -93,8 +57,6 @@
 {
     //记得在此释放资源
 	//先 release方法，再赋值 nil
-    
-	// don't forget to call "super dealloc"
     [selSprite release];
     selSprite = nil;
     
@@ -104,52 +66,94 @@
 }
 
 #pragma mark Scenes
+
+- (void) onEnterTransitionDidFinish {
+    //获取窗口大小
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    
+    //初始化按钮数组
+    //左翻页tag = 1 ，右翻页tag = 2 。在 selectSpriteForTouch 函数中判断用
+    movableSprites = [[NSMutableArray alloc] init];
+    
+    //左翻页
+    ExtSprite *buttonLeft = [ExtSprite spriteWithFile:@"bt01.png"];
+    buttonLeft.position = ccp(winSize.width * 0.1, winSize.height * 0.9);
+    buttonLeft.tag = 1;
+    [self addChild:buttonLeft];
+    [movableSprites addObject:buttonLeft];
+    //右翻页
+    ExtSprite *buttonRight = [ExtSprite spriteWithFile:@"bt02.png"];
+    buttonRight.position = ccp(winSize.width * 0.9, winSize.height * 0.9);
+    buttonRight.tag = 2;
+    [self addChild:buttonRight];
+    [movableSprites addObject:buttonRight];
+    //CoverFlow
+    ExtSprite *coverFLow = [ExtSprite spriteWithFile:@"coverflow.png"];
+    coverFLow.position = ccp(winSize.width * 0.5, winSize.height * 0.9);
+    coverFLow.tag = 3;
+    [self addChild:coverFLow];
+    [movableSprites addObject:coverFLow];
+    //画图游戏
+    ExtSprite *arcade = [ExtSprite spriteWithFile:@"arcade.png"];
+    arcade.position = ccp(winSize.width * 0.1, winSize.height * 0.1);
+    arcade.tag = 4;
+    [self addChild:arcade];
+    [movableSprites addObject:arcade];
+    
+    [buttonLeft release];
+    [buttonRight release];
+    [coverFLow release];
+    [arcade release];
+    
+    buttonLeft = nil;
+    buttonRight = nil;
+    coverFLow = nil;
+    arcade = nil;
+}
+
 //重写须修改scene
 //场景切换函数：下一页
 -(void) nextPage
 {
     //此处等待重写
     //每个Page的下一个Page
-	//CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page1 scene] backwards:YES];
-    //[[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 //场景切换函数：上一页
 -(void) prevPage
 {
     //此处等待重写
     //每个Page的上一个Page
-	//CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page1 scene] backwards:YES];
-    //[[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 
 - (void) enterCoverFlow
 {
-    //载入画图游戏
-//    PainterViewController *patinter;
-//    patinter = [[PainterViewController alloc] initWithNibName:@"PainterViewController" bundle:nil];
-//    [[[[CCDirector sharedDirector] view] window] addSubview:patinter.view];
-
+    //停止cocos2d的图像
+    [[CCDirector sharedDirector] stopAnimation];
+    //载入coverflow效果 
     CoverflowViewController *cf;
     cf = [[CoverflowViewController alloc] initWithNibName:@"CoverflowViewController" bundle:nil];
-    [cf setImageNumber:10 currentPage:1 imageName:@"cover_1.jpg"];
+    [cf setImageNumber:10 currentPage:thisPageCount imageName:@"cover_0.jpg"];
     [[[CCDirector sharedDirector] view] addSubview:cf.view];
     
 }
 
 - (void) enterGame 
 {
-//载入画图游戏
+    //停止cocos2d的图像
+    [[CCDirector sharedDirector] stopAnimation];
+    //载入画图游戏
     PainterViewController *patinter;
     patinter = [[PainterViewController alloc] initWithNibName:@"PainterViewController" bundle:nil];
     [[[[CCDirector sharedDirector] view] window] addSubview:patinter.view];    
 }
 
 #pragma mark Touch matics
-//精灵的点击
+
+//精灵接受点击机制
 - (void)selectSpriteForTouch:(CGPoint)touchLocation {
-    CCSprite * newSprite = nil;
+    ExtSprite * newSprite = nil;
     //循环到点击的那个精灵，返回给newSprite
-    for (CCSprite *sprite in movableSprites) {
+    for (ExtSprite *sprite in movableSprites) {
         if (CGRectContainsPoint(sprite.boundingBox, touchLocation)) {            
             newSprite = sprite;
             break;
@@ -160,32 +164,41 @@
         [selSprite stopAllActions];          
         selSprite = newSprite;
     }
+    //
     
     if(selSprite.tag == 1){
-        NSLog(@"touched left");
+
+        debuglog(@"touched left");
+
         [self prevPage];
     }
     
     if(selSprite.tag == 2){
-        NSLog(@"touched right");
+        debuglog(@"touched right");
         [self nextPage];
     }
     
     if(selSprite.tag == 3){
-        NSLog(@"touched middle");
+        debuglog(@"touched middle");
         [self enterCoverFlow];
     }
     
     if(selSprite.tag == 4){
-        NSLog(@"touched game");
+        debuglog(@"touched game");
         [self enterGame];
     }
     
 }
-- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {    
+
+- (void) SpriteMove {
+    //留给每页的精灵来重写
+}
+
+- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {  
+    debuglog(@"touch began");
     CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
-    [self selectSpriteForTouch:touchLocation];   
-    //[self touchForPages:touchLocation];
+    [self selectSpriteForTouch:touchLocation]; 
+    [self SpriteMove];
     return TRUE;    
 }
 

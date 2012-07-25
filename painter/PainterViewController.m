@@ -94,7 +94,7 @@
 
         
         drawingView.backgroundColor = [UIColor clearColor];
-        drawingView.opaque = YES;
+        drawingView.opaque = NO;
         drawingView.frame = CGRectMake(xOffset, yOffset, 720, 480);
         
         //补充：添加drawingView防止遮挡
@@ -249,8 +249,13 @@
     switch (btn.tag)
     {
         case 1:
-            [self.view removeFromSuperview];
-            [self.view release];
+//            drawingView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg1.jpg"]];
+//            UIGraphicsBeginImageContext(drawingView.bounds.size);
+//            [drawingView.layer renderInContext:UIGraphicsGetCurrentContext()];
+//            UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+//            UIGraphicsEndImageContext();
+//            UIImageWriteToSavedPhotosAlbum(viewImage, nil, nil, nil);
+            [drawingView captureToPhotoAlbum];
             break;
         case 2:
         {
@@ -391,6 +396,104 @@
     return;
 }
 
+#pragma mark GL screenshot
+
+-(UIImage *) glToUIImage {
+    NSInteger myDataLength = 1024 * 768 * 4;
+    
+    // allocate array and read pixels into it.
+    //glReadBuffer(GL_BACK);
+    
+    //glEnable(GL_BLEND);
+    //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
+    GLubyte *buffer = (GLubyte *) malloc(myDataLength);
+    glReadPixels(0, 0, 1024, 768, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+    
+    // gl renders "upside down" so swap top to bottom into new array.
+    // there's gotta be a better way, but this works.
+    GLubyte *buffer2 = (GLubyte *) malloc(myDataLength);
+    for(int y = 0; y <768; y++)
+    {
+        for(int x = 0; x <1024 * 4; x++)
+        {
+            buffer2[(767 - y) * 1024 * 4 + x] = buffer[y * 4 * 1024 + x];
+        }
+    }
+    // AppTreeHust@gmail.com 
+    // make data provider with data.
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer2, myDataLength, NULL);
+    
+    // prep the ingredients
+    int bitsPerComponent = 8;
+    int bitsPerPixel = 32;
+    int bytesPerRow = 4 * 1024;
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault;
+    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
+    
+    // make the cgimage
+    CGImageRef imageRef = CGImageCreate(1024, 768, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
+    
+    // then make the uiimage from that
+    UIImage *myImage = [UIImage imageWithCGImage:imageRef];
+    return myImage;
+}
+
+
+-(void)captureToPhotoAlbum {
+    UIImage *image = [self glToUIImage];
+    UIImageWriteToSavedPhotosAlbum(image, self, nil, nil);
+}
+
+#pragma mark iosscreen shot
+
+-(void)ScreenShots
+{
+    //[self unschedule:@selector(ScreenShots)];
+    
+    CGSize imageSize = [[UIScreen mainScreen] bounds].size;
+    if (NULL != UIGraphicsBeginImageContextWithOptions) {
+        UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
+    }
+    else
+    {
+        UIGraphicsBeginImageContext(imageSize);
+    }
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    for (UIWindow * window in [[UIApplication sharedApplication] windows]) {
+        if (![window respondsToSelector:@selector(screen)] || [window screen] == [UIScreen mainScreen]) {
+            CGContextSaveGState(context);
+            CGContextTranslateCTM(context, [window center].x, [window center].y);
+            CGContextConcatCTM(context, [window transform]);
+            CGContextTranslateCTM(context, -[window bounds].size.width*[[window layer] anchorPoint].x, -[window bounds].size.height*[[window layer] anchorPoint].y);
+            [[window layer] renderInContext:context];
+            
+            CGContextRestoreGState(context);
+        }
+    }
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    NSThread *thread=[[NSThread alloc] initWithTarget:self selector:@selector(saveThread:) object:image];
+    [thread start];
+    [thread release];
+    
+    NSLog(@"Suceeded!");
+}
+
+
+-(void)saveThread:(UIImage*)image
+{
+    NSAutoreleasePool *pool=[[NSAutoreleasePool alloc]init];
+    UIImageWriteToSavedPhotosAlbum(image, self, nil, nil);
+    [pool release];
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -408,5 +511,9 @@
 {
 	return (interfaceOrientation==UIInterfaceOrientationPortrait  || interfaceOrientation==UIInterfaceOrientationPortraitUpsideDown);
 }
+
+#pragma mark grabScreen
+
+
 
 @end

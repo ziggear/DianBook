@@ -10,6 +10,8 @@
 #import "HelloWorldLayer.h"
 
 @interface Page1 : HelloWorldLayer {
+    CCSprite *background;
+    CCSprite *alpha;
 }
 
 +(CCScene *) scene;

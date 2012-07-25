@@ -45,4 +45,9 @@
 - (void)setBrushTypeWithtag:(int)tag;
 -(void)buildBrushtexturewithfile:(NSString*)fileName;
 -(void)setBrushSize:(float)size;
+
+
+-(void)captureToPhotoAlbum;
+-(void)setBg;
+
 @end
