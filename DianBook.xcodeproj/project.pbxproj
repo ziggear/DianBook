@@ -123,6 +123,8 @@
 		0704F7AC15C0167D00A5EBFC /* page_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 0704F7A915C0167D00A5EBFC /* page_home.png */; };
 		0704F7AD15C0167D00A5EBFC /* page_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 0704F7AA15C0167D00A5EBFC /* page_left.png */; };
 		0704F7AE15C0167D00A5EBFC /* page_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 0704F7AB15C0167D00A5EBFC /* page_right.png */; };
+		0704F7B315C01ABF00A5EBFC /* GestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0704F7B015C01ABE00A5EBFC /* GestureRecognizer.m */; };
+		0704F7B415C01ABF00A5EBFC /* TapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0704F7B215C01ABF00A5EBFC /* TapGestureRecognizer.m */; };
 		072440A915B8256F00C74F31 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072440A815B8256F00C74F31 /* QuartzCore.framework */; };
 		072440AB15B8256F00C74F31 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072440AA15B8256F00C74F31 /* OpenGLES.framework */; };
 		072440AD15B8256F00C74F31 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072440AC15B8256F00C74F31 /* OpenAL.framework */; };
@@ -387,6 +389,10 @@
 		0704F7A915C0167D00A5EBFC /* page_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page_home.png; sourceTree = "<group>"; };
 		0704F7AA15C0167D00A5EBFC /* page_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page_left.png; sourceTree = "<group>"; };
 		0704F7AB15C0167D00A5EBFC /* page_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page_right.png; sourceTree = "<group>"; };
+		0704F7AF15C01ABE00A5EBFC /* GestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRecognizer.h; sourceTree = "<group>"; };
+		0704F7B015C01ABE00A5EBFC /* GestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureRecognizer.m; sourceTree = "<group>"; };
+		0704F7B115C01ABE00A5EBFC /* TapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapGestureRecognizer.h; sourceTree = "<group>"; };
+		0704F7B215C01ABF00A5EBFC /* TapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapGestureRecognizer.m; sourceTree = "<group>"; };
 		072440A415B8256F00C74F31 /* DianBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DianBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		072440A815B8256F00C74F31 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		072440AA15B8256F00C74F31 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -710,6 +716,10 @@
 		0704F6B015BFF2DF00A5EBFC /* Utiliy */ = {
 			isa = PBXGroup;
 			children = (
+				0704F7AF15C01ABE00A5EBFC /* GestureRecognizer.h */,
+				0704F7B015C01ABE00A5EBFC /* GestureRecognizer.m */,
+				0704F7B115C01ABE00A5EBFC /* TapGestureRecognizer.h */,
+				0704F7B215C01ABF00A5EBFC /* TapGestureRecognizer.m */,
 				0704F6B115BFF2DF00A5EBFC /* Animate.h */,
 				0704F6B215BFF2DF00A5EBFC /* Animate.m */,
 				0704F6B315BFF2DF00A5EBFC /* Assist.h */,
@@ -1886,6 +1896,8 @@
 				0704F79A15C0166900A5EBFC /* ColorPicker.m in Sources */,
 				0704F7A515C0166900A5EBFC /* PainterViewController.m in Sources */,
 				0704F7A715C0166900A5EBFC /* PaintingView.m in Sources */,
+				0704F7B315C01ABF00A5EBFC /* GestureRecognizer.m in Sources */,
+				0704F7B415C01ABF00A5EBFC /* TapGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

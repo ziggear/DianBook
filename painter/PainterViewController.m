@@ -676,8 +676,7 @@
     switch (btn.tag)
     {
         case 1:
-        
-            [(ViewController*)CBAppDelegate.viewController  dismissModalViewControllerAnimated:YES];
+            //[(ViewController*)CBAppDelegate.viewController  dismissModalViewControllerAnimated:YES];
             break;
         case 2:
             
