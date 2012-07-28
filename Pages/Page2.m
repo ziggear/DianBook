@@ -22,13 +22,13 @@
 
 //重写须修改scene
 //场景切换函数：下一页
--(void) nextPage:(int)thisPageCount
+-(void) nextPage
 {   
 	CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page3 scene] backwards:YES];
     [[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 //场景切换函数：上一页
--(void) prevPage:(int)thisPageCount{     	
+-(void) prevPage{     	
     CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page1 scene] backwards:YES];
     [[CCDirector sharedDirector] replaceScene: transitionScene];
 }

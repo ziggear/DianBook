@@ -37,16 +37,22 @@
     NSMutableArray * movableSprites;
     int         thisPageCount;         //本页的页数，初始化为零 表示封面 
     
-    CGSize globalWinSize;                       //保存窗口大小
-    NSMutableArray * soundIds;                  //保存播放音效留下来的 soundID
+    //一些辅助数据
+    CGSize globalWinSize;              //保存窗口大小
+    int soundIds[5];                   //保存播放音效留下来的 soundID
+    NSArray *soundPaths;               //保存需要载入和卸载的声音文件
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
 +(CCScene *) scene;
--(void) nextPage:(int)thisPageCount;
--(void) prevPage:(int)thisPageCount;
--(void)selectSpriteOnPage:(CGPoint)touchLocation;
+
+- (void) nextPage;
+- (void) prevPage;
+- (void) selectSpriteOnPage:(CGPoint)touchLocation;
 - (void) enterCoverFlow;
 - (void) enterGame;
+
+- (void) preLoadSound: (NSArray *) paths;
+- (void) unLoadSound;
 
 @end

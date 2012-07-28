@@ -20,15 +20,14 @@
 
 //重写须修改scene
 //场景切换函数：下一页
--(void) nextPage:(int)thisPageCount{
+-(void) nextPage{
     //debuglog(@"nextPage^^^^^^^^^^^^^^^^^3");
 	CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page4 scene] backwards:YES];
     [[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 //场景切换函数：上一页
--(void) prevPage:(int)thisPageCount
+-(void) prevPage
 {
-    
     //debuglog(@"prevPage^^^^^^^^^^^^^^^^^3");	
 	CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page2 scene] backwards:YES];
     [[CCDirector sharedDirector] replaceScene: transitionScene];

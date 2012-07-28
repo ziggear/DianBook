@@ -44,11 +44,23 @@
 {
     CCLOG(@"%@ : %@", NSStringFromSelector(_cmd), self);
     
-	if((self = [super init])) {        
+	if((self = [super init])) {  
+        
+        //初始化音效ID
+        for (int i=0; i<=4; i++) {
+            soundIds[i] = 0;
+        }
         //获取窗口大小
         globalWinSize = [[CCDirector sharedDirector] winSize];
         
-        //初始化按钮数组
+        //接受点击
+        [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0  swallowsTouches:YES];
+        
+        //初始化页码
+        thisPageCount = 0;
+        
+        
+        //顶部按钮数组
         //左翻页tag = 1 ，右翻页tag = 2 。在 selectSpriteForTouch 函数中判断用
         movableSprites = [[NSMutableArray alloc] init];
         
@@ -65,9 +77,6 @@
         [self addChild:buttonRight z:10];
         [movableSprites addObject:buttonRight ];
         
-        [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0  swallowsTouches:YES];
-        thisPageCount = 1;
-        
         CCSprite *coverFLow = [CCSprite spriteWithFile:@"page_home.png"];
         coverFLow.position = ccp(globalWinSize.width * 0.5, globalWinSize.height * 0.95);
         coverFLow.tag = 3;
@@ -79,7 +88,6 @@
         arcade.tag = 4;
         [self addChild:arcade z:10];
         [movableSprites addObject:arcade];
-        
         
         [buttonLeft release];
         [buttonRight release];
@@ -93,26 +101,52 @@
 - (void) dealloc
 {
     CCLOG(@"%@ : %@", NSStringFromSelector(_cmd), self);
+    
+    //停止所有音频播放
+    for (int i=0; i<=4; i++) {
+        [[SimpleAudioEngine sharedEngine] stopEffect:soundIds[i]];
+    }
+    [self unLoadSound];
+    
     //记得在此释放资源
 	//先 release方法，再赋值 nil
-	// don't forget to call "super dealloc"
     [selSprite release];
     selSprite = nil;
     [movableSprites release];
     movableSprites = nil;
     [super dealloc];
 }
+#pragma mark Soundffects
+
+- (void) preLoadSound: (NSArray *) paths
+{
+    soundPaths = paths;
+    if(soundPaths.count > 0) {
+        for(int i=0; i < (soundPaths.count); i++){
+            [[SimpleAudioEngine sharedEngine] preloadEffect:[soundPaths objectAtIndex:i]];
+        }
+    }
+    CCLOG(@"Loaded %d Effects", soundPaths.count);
+}
+
+- (void) unLoadSound
+{
+    for(int i=0; i < (soundPaths.count); i++){
+        [[SimpleAudioEngine sharedEngine] unloadEffect:[soundPaths objectAtIndex:i]];
+    }
+    CCLOG(@"Unload %d Effects", soundPaths.count);
+}
 
 #pragma mark Scenes
 //重写须修改scene
 //场景切换函数：下一页
--(void) nextPage:(int)thisPageCount
+-(void) nextPage
 {
     //此处等待重写
     //每个Page的下一个Page
 }
 //场景切换函数：上一页
--(void) prevPage:(int)thisPageCount
+-(void) prevPage
 {  
     //此处等待重写
     //每个Page的上一个Page
@@ -139,21 +173,14 @@
     }
     
     if(selSprite.tag == 1){
-        CCLOG(@"touched left:%d");
-        //加条件判句
-        if(thisPageCount >0){
-            thisPageCount --;
-            [self prevPage:thisPageCount];        
-        }
+        CCLOG(@"touched left");
+            [self prevPage];       
         
     }
     
     if(selSprite.tag == 2){
-        NSLog(@"touched right :%d",thisPageCount);
-        if(thisPageCount <3){
-            thisPageCount ++;
-            [self nextPage:thisPageCount];        
-        }
+        NSLog(@"touched right");
+        [self nextPage];        
     }
     
     
@@ -174,10 +201,10 @@
 }
 
 - (void) enterCoverFlow
-{
-    //停止cocos2d视图
-    
-    [[CCDirector sharedDirector] stopAnimation];
+{\
+    //载入等待场景
+    [[CCDirector sharedDirector] replaceScene:[Loading scene]];
+
     //进入coverflow
     CoverflowViewController *cf;
     cf = [[CoverflowViewController alloc] initWithNibName:@"CoverflowViewController" bundle:nil];
@@ -185,6 +212,9 @@
     [[[CCDirector sharedDirector] view] addSubview:cf.view];
     //释放View
     [cf.view release];
+    
+    //停止cocos2d视图
+    [[CCDirector sharedDirector] stopAnimation];
 }
 
 - (void) enterGame 

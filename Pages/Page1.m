@@ -21,22 +21,22 @@
 
 //重写须修改scene
 //场景切换函数：下一页
--(void) nextPage:(int)thisPageCount{
+-(void) nextPage{
     CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page2 scene] backwards:YES];
     [[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 //场景切换函数：上一页
--(void) prevPage:(int)thisPageCount{ 
+-(void) prevPage{ 
 	//CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page1 scene] backwards:YES];
     //[[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 
 - (id) init {
     if(self = [super init]) {
-        [[SimpleAudioEngine sharedEngine] preloadEffect:@"tree.mp3"];
-        [[SimpleAudioEngine sharedEngine] preloadEffect:@"1.mp3"];
+        NSArray *sds = [NSArray arrayWithObjects:@"1.mp3", @"tree.mp3", nil];
+        [self preLoadSound:sds];
        
-        soundId_1 = [[SimpleAudioEngine sharedEngine] playEffect:@"1.mp3"];
+        soundIds[0] = [[SimpleAudioEngine sharedEngine] playEffect:@"1.mp3"];
         
         movableSprites1 = [[NSMutableArray alloc] init];
                 
@@ -98,9 +98,8 @@
         //发出树叶的“沙沙”声
         
         //树叶抖动动画
-        
-        [[SimpleAudioEngine sharedEngine] stopEffect:soundId_1];
-        soundId_2 = [[SimpleAudioEngine sharedEngine] playEffect:@"tree.mp3"];
+        [[SimpleAudioEngine sharedEngine] stopEffect:soundIds[0]];
+        soundIds[1] = [[SimpleAudioEngine sharedEngine] playEffect:@"tree.mp3"];
         
     }
 }
@@ -111,9 +110,6 @@
 
 - (void) dealloc
 {
-    //停止这个页面的所有音效
-    [[SimpleAudioEngine sharedEngine] stopEffect:soundId_1];
-    [[SimpleAudioEngine sharedEngine] stopEffect:soundId_2];
     //卸载音效
     [[SimpleAudioEngine sharedEngine] unloadEffect:@"tree.mp3"];
     [[SimpleAudioEngine sharedEngine] unloadEffect:@"1.mp3"];

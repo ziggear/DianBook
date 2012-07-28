@@ -22,11 +22,11 @@
     if(self = [super init]) {
         [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0  swallowsTouches:YES];
         
-        background = [CCSprite spriteWithFile:@"white.jpg"];
+        background = [CCSprite spriteWithFile:@"black.jpg"];
         background.position = ccp(512, 384);
         [self addChild:background];
         
-        roll = [CCSprite spriteWithFile:@"roll.png"];
+        roll = [CCSprite spriteWithFile:@"roll-white.png"];
         roll.position = ccp(512, 384);    
         
         

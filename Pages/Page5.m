@@ -21,22 +21,21 @@
 
 //重写须修改scene
 //场景切换函数：下一页
--(void) nextPage:(int)thisPageCount{
-    
-    NSLog(@"nextPage^^^^^^^^^^^^^^^^^5");
+-(void) nextPage{
+    //NSLog(@"nextPage^^^^^^^^^^^^^^^^^5");
     CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page6 scene] backwards:YES];
         [[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 //场景切换函数：上一页
--(void) prevPage:(int)thisPageCount{
-    NSLog(@"prevPage^^^^^^^^^^^^^^^^^5");	
+-(void) prevPage{
+    //NSLog(@"prevPage^^^^^^^^^^^^^^^^^5");	
 	CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page4 scene] backwards:YES];
     [[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 
 
 - (void) onEnterTransitionDidFinish {
-    debuglog(@"onEnterTransitionDidFinish");
+    //debuglog(@"onEnterTransitionDidFinish");
     CGSize size = [[CCDirector sharedDirector] winSize]; 
     
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"5_1_00.plist"];

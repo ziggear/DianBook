@@ -96,6 +96,7 @@
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
     //return (interfaceOrientation == UIInterfaceOrientationPortrait);
     //return YES;
+    //return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 

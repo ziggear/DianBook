@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "DianBook/HelloWorldLayer.m"
-         timestampString = "365068660.442563"
+         timestampString = "365157850.213209"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "194"
-         endingLineNumber = "194"
+         startingLineNumber = "220"
+         endingLineNumber = "220"
          landmarkName = "-enterGame"
          landmarkType = "5">
       </FileBreakpoint>
@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "DianBook/HelloWorldLayer.m"
-         timestampString = "365047162.069048"
+         timestampString = "365138036.836451"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "91"
-         endingLineNumber = "91"
+         startingLineNumber = "101"
+         endingLineNumber = "101"
          landmarkName = "-dealloc"
          landmarkType = "5">
       </FileBreakpoint>
@@ -51,11 +51,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "DianBook/HelloWorldLayer.m"
-         timestampString = "365047164.190101"
+         timestampString = "365156858.954866"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "93"
-         endingLineNumber = "93"
+         startingLineNumber = "108"
+         endingLineNumber = "108"
          landmarkName = "-dealloc"
          landmarkType = "5">
       </FileBreakpoint>
