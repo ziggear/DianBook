@@ -21,7 +21,7 @@
 //重写须修改scene
 //场景切换函数：下一页
 -(void) nextPage:(int)thisPageCount{
-    debuglog(@"nextPage^^^^^^^^^^^^^^^^^3");
+    //debuglog(@"nextPage^^^^^^^^^^^^^^^^^3");
 	CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page4 scene] backwards:YES];
     [[CCDirector sharedDirector] replaceScene: transitionScene];
 }
@@ -29,21 +29,18 @@
 -(void) prevPage:(int)thisPageCount
 {
     
-    debuglog(@"prevPage^^^^^^^^^^^^^^^^^3");	
+    //debuglog(@"prevPage^^^^^^^^^^^^^^^^^3");	
 	CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page2 scene] backwards:YES];
     [[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 
 - (id) init {
     if(self = [super init]) {
-        debuglog(@"---------------init3");
-        
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"3.mp3" loop:NO];
-        
-        CGSize size = [[CCDirector sharedDirector] winSize]; 
+        //debuglog(@"---------------init3");
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"3.mp3"];
+        [[SimpleAudioEngine sharedEngine] playEffect:@"3.mp3"];
         
         CCSprite *background;
-        [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGB565];
         background = [CCSprite spriteWithFile:@"bg3.png"];
         background.position = ccp(512,384);
         background.scale = 1;
@@ -51,8 +48,6 @@
         //z是节点显示的层次
         [self addChild:background z:0];
         
-        //恢复颜色设置
-        [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_Default];
                 
         //文字
         CCSprite *words = [CCSprite spriteWithFile:@"word3_1.png"];   
@@ -62,7 +57,7 @@
         CCFadeTo* fadeto =[CCFadeTo actionWithDuration:2.5f opacity:255];      
         [words runAction:fadeto]; 
         
-        //点击画面，播放“呜呜”的声音，小狗头上起了个红包，红包渐渐出现
+//        //点击画面，播放“呜呜”的声音，小狗头上起了个红包，红包渐渐出现
 //        CCMenuItemSprite* wordm = [CCMenuItemSprite itemWithNormalSprite:words selectedSprite:nil block:^(id sender) {
 
 //        }]; 
@@ -74,6 +69,11 @@
     
     }
     return self;
+}
+
+- (void) dealloc {
+    [[SimpleAudioEngine sharedEngine] unloadEffect:@"3.mp3"];
+    [super dealloc];
 }
 
 @end

@@ -24,18 +24,15 @@
 //场景切换函数：下一页
 -(void) nextPage:(int)thisPageCount
 {   
-    debuglog(@"nextPage^^^^^^^^^^^^^^^^^2");
 	CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page3 scene] backwards:YES];
     [[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 //场景切换函数：上一页
--(void) prevPage:(int)thisPageCount{     
-    debuglog(@"prevPage^^^^^^^^^^^^^^^^^2");	
+-(void) prevPage:(int)thisPageCount{     	
     CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page1 scene] backwards:YES];
     [[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 - (void) onEnterTransitionDidFinish {
-    debuglog(@"onEnterTransitionDidFinish");
     
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"des2.mp3" loop:NO];
     
@@ -82,6 +79,9 @@
     if(self = [super init]) {
          NSLog(@"---------------init2");
        
+        //预载音效
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"gale.mp3"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"nest.mp3"];
         
         
         movableSprites2 = [[NSMutableArray alloc] init];       
@@ -129,7 +129,7 @@
         wind.opacity = 225;
         //   wind.zOrder = -1;
         //朗读大风
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"gale.mp3" loop:NO];        
+        [[SimpleAudioEngine sharedEngine] playEffect:@"gale.mp3"];        
     }
     
     if(selSprite2.tag == 22){
@@ -144,14 +144,12 @@
         [nest runAction:actionSequence]; 
         
         //朗读鸟窝 
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"nest.mp3" loop:NO];        
+        [[SimpleAudioEngine sharedEngine] playEffect:@"nest.mp3"];        
     }
    
     if(selSprite2.tag == 23){
-        NSLog(@"dogm");
-        
+        //NSLog(@"dogm");
         //发出“汪汪”的狗叫声
-        
         //播放小狗摇尾巴动画
         dog.opacity=255;
         Animate *anim = [[Animate alloc] init];
@@ -168,12 +166,11 @@
     if(selSprite2.tag == 24){
         //发出碰撞声
         //播过小狗被砸到动画
-        NSLog(@"dogsmashedm");
+        //NSLog(@"dogsmashedm");
        dogsmashed.opacity = 255;
         
         //朗读哎哟 
-        
-        
+
         //翻页声
         thisPageCount++;
         CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page3 scene] backwards:YES];
@@ -185,10 +182,16 @@
 
 - (void) dealloc
 {
+    [[SimpleAudioEngine sharedEngine] unloadEffect:@"gale.mp3"];
+    [[SimpleAudioEngine sharedEngine] unloadEffect:@"nest.mp3"];
+    
     [wind release];
      wind = nil;
     
     [nest release];
+    nest = nil;
+    
+    [dog release];
      dog = nil;
     
     [dogsmashed release];

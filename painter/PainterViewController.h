@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ColorPicker.h"
+#import "HelloWorldLayer.h"
 
 @class PaintingView;
 @interface PainterViewController : UIViewController<UIPopoverControllerDelegate,ColorPickerDelegate>

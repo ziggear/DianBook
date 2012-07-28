@@ -22,30 +22,28 @@
 //重写须修改scene
 //场景切换函数：下一页
 -(void) nextPage:(int)thisPageCount{
-     NSLog(@"nextPage^^^^^^^^^^^^^^^^^1");
     CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page2 scene] backwards:YES];
     [[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 //场景切换函数：上一页
--(void) prevPage:(int)thisPageCount{
-     NSLog(@"prevPage^^^^^^^^^^^^^^^^^1");  
+-(void) prevPage:(int)thisPageCount{ 
 	//CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page1 scene] backwards:YES];
     //[[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 
 - (id) init {
     if(self = [super init]) {
-//    if(self = [super onEnterTransitionDidFinish]){
-        NSLog(@"---------------init1");
-        
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"1.mp3" loop:NO];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"tree.mp3"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"1.mp3"];
+       
+        soundId_1 = [[SimpleAudioEngine sharedEngine] playEffect:@"1.mp3"];
         
         movableSprites1 = [[NSMutableArray alloc] init];
-        CGSize size = [[CCDirector sharedDirector] winSize];         
+                
         CCSprite *background;
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGB565];
         background = [CCSprite spriteWithFile:@"bg1.jpg"];        
-        background.position = ccp(size.width/2,size.height/2);
+        background.position = ccp(globalWinSize.width*0.5, globalWinSize.height*0.5);
         background.scale = 1;
         //设置z为-1让各种按钮显示出来
         //z是节点显示的层次,z越大越接近屏幕
@@ -57,15 +55,16 @@
                 
         //文字
         words = [CCSprite spriteWithFile:@"1_1_1.png"];        
-        words.position = ccp(718,size.height/2);
+        words.position = ccp(718,globalWinSize.height*0.5);
         [self addChild:words];
+        //[words release];
                     
         //大树,只是一个区域
         CCSprite *tree = [CCSprite node];
-        tree.textureRect = CGRectMake(0, 0, size.width*0.67, size.height*0.88);
+        tree.textureRect = CGRectMake(0, 0, globalWinSize.width*0.67, globalWinSize.height*0.88);
         tree.opacity=0;//半透明[0~255] 
         tree.tag = 11;
-        tree.position=ccp(size.width/2,size.height/2);
+        tree.position=ccp(globalWinSize.width*0.5,globalWinSize.height*0.5);
         [self addChild:tree];
         [movableSprites1 addObject:tree];
         [tree release];
@@ -98,15 +97,27 @@
         [words runAction:actionSequence];   
         //发出树叶的“沙沙”声
         
-        //树叶抖动动画 
+        //树叶抖动动画
         
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"tree.mp3" loop:NO];      
+        [[SimpleAudioEngine sharedEngine] stopEffect:soundId_1];
+        soundId_2 = [[SimpleAudioEngine sharedEngine] playEffect:@"tree.mp3"];
         
     }
 }
 
+- (void) onExit {
+
+}
+
 - (void) dealloc
 {
+    //停止这个页面的所有音效
+    [[SimpleAudioEngine sharedEngine] stopEffect:soundId_1];
+    [[SimpleAudioEngine sharedEngine] stopEffect:soundId_2];
+    //卸载音效
+    [[SimpleAudioEngine sharedEngine] unloadEffect:@"tree.mp3"];
+    [[SimpleAudioEngine sharedEngine] unloadEffect:@"1.mp3"];
+    
     [selSprite1 release];
     selSprite = nil;
     

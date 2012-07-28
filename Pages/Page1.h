@@ -12,7 +12,8 @@
 @interface Page1 : HelloWorldLayer {
     CCSprite * selSprite1;
     CCSprite *words;    
-    NSMutableArray * movableSprites1;    
+    NSMutableArray * movableSprites1;  
+    int soundId_1,soundId_2;
 }
 
 +(CCScene *) scene;

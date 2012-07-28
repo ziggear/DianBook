@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "cocos2d.h"
 
-@interface Loading : NSObject
+@interface Loading : CCLayer {
+    CCSprite *background;
+    CCSprite *roll;   
+}
 
++(CCScene *) scene;
 @end

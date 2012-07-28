@@ -23,20 +23,19 @@
 //重写须修改scene
 //场景切换函数：下一页
 -(void) nextPage:(int)thisPageCount{    
-    debuglog(@"nextPage^^^^^^^^^^^^^^^^^4");
+    //debuglog(@"nextPage^^^^^^^^^^^^^^^^^4");
 	CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page5 scene] backwards:YES];
     [[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 //场景切换函数：上一页
 -(void) prevPage:(int)thisPageCount{
-    debuglog(@"prevPage^^^^^^^^^^^^^^^^^4");	
+    //debuglog(@"prevPage^^^^^^^^^^^^^^^^^4");	
 	CCTransitionPageTurn *transitionScene=[CCTransitionPageTurn transitionWithDuration:0.5 scene:[Page3 scene] backwards:YES];
     [[CCDirector sharedDirector] replaceScene: transitionScene];
 }
 
 - (void) onEnterTransitionDidFinish {
-     debuglog(@"onEnterTransitionDidFinish");
-    
+     //debuglog(@"onEnterTransitionDidFinish");
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"4.mp3" loop:NO];
 
     
@@ -45,17 +44,15 @@
 
 - (id) init {
     if(self = [super init]) {
-        debuglog(@"---------------init4");
-        
+        //debuglog(@"---------------init4");
         movableSprites4 = [[NSMutableArray alloc] init];    
 
-        [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGB565];
         background = [CCSprite spriteWithFile:@"bg4_1.png"];
         background.position = ccp(512,384);
         background.scale = 1;
         background.tag = 41;
         [self addChild:background z:-1];       
-        [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_Default];
+        
         [movableSprites4 addObject:background];
         bgnum = 1;
     }

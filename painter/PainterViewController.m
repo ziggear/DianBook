@@ -12,6 +12,7 @@
 //#import "Foudation.h"
 //#import "ViewController.h"
 #import "ColorPicker.h"
+//#import "PageView.h"
 #import "TapGestureRecognizer.h"
 #import "GestureRecognizer.h"
 
@@ -79,7 +80,7 @@
         slider.value = 16;
         [slider addTarget:self action:@selector(sliderValueChange:) forControlEvents:UIControlEventValueChanged];
         [self.view addSubview:slider];
-   //     [slider release];
+        //     [slider release];
         
         
         
@@ -90,37 +91,34 @@
         UIButton *pencilSmall = [[UIButton alloc] init];
         pencilSmall.frame = CGRectMake(40, 140, 44, 44);
         pencilSmall.showsTouchWhenHighlighted = NO;
-       // [pencilSmall setBackgroundImage:[UIImage imageNamed:@"pencil-small.png"] forState:UIControlStateNormal];
+        // [pencilSmall setBackgroundImage:[UIImage imageNamed:@"pencil-small.png"] forState:UIControlStateNormal];
         [self.view addSubview:pencilSmall]; 
-    //    [pencilSmall release];
+        //    [pencilSmall release];
         
         UIButton *pencilLarge = [[UIButton alloc] init];
         pencilLarge.frame = CGRectMake(300, 130, 80, 80);
         pencilLarge.showsTouchWhenHighlighted = NO;
-       // [pencilLarge setBackgroundImage:[UIImage imageNamed:@"pencil-large.png"] forState:UIControlStateNormal];
-       [self.view addSubview:pencilLarge]; 
-     //   [pencilLarge release]; 
+        // [pencilLarge setBackgroundImage:[UIImage imageNamed:@"pencil-large.png"] forState:UIControlStateNormal];
+        [self.view addSubview:pencilLarge]; 
+        //   [pencilLarge release]; 
         //补充完毕
-
         
-        
-
         
         drawingView.backgroundColor = [UIColor clearColor];
-        drawingView.opaque = YES;
-        drawingView.frame = CGRectMake(xOffset, yOffset, 465, 728);
-
-        //补充：添加drawingView防止遮挡
-        [self.view insertSubview:drawingView atIndex:1];
+        drawingView.opaque = NO;
+        drawingView.frame = CGRectMake(xOffset, yOffset, 720, 480);
         
-        smallView=[[UIImageView alloc] initWithFrame:CGRectMake(400,30,360, 240)];
-        smallView.image = [UIImage imageNamed:[NSString stringWithFormat:@"0_%d.jpg",imageNum]];
-        smallView.opaque =NO;
-      //  [self.view addSubview:smallView];
+        //补充：添加drawingView防止遮挡
+        [self.view insertSubview:drawingView atIndex:0];
+        
+        //smallView=[[UIImageView alloc] initWithFrame:CGRectMake(400,30,360, 240)];
+        //smallView.image = [UIImage imageNamed:[NSString stringWithFormat:@"0_%d.jpg",imageNum]];
+        //smallView.opaque =NO;
+        //  [self.view addSubview:smallView];
         
         backView = [[UIImageView alloc] initWithFrame:CGRectMake(xOffset, yOffset, 720, 490)];
-        backView.image = [UIImage imageNamed:[NSString stringWithFormat:@"hbg%d.png",imageNum]];
-        backView.opaque =NO;
+        backView.image = [UIImage imageNamed:[NSString stringWithFormat:@"cover_%d.jpg",imageNum]];
+        backView.opaque = NO;
         
         //补充：添加背景
         [self.view addSubview:background];
@@ -131,9 +129,8 @@
         
         //补充：设置背景为最底层
         [self.view sendSubviewToBack:background];
-     //   [background release];
+        [background release];
         //补充完毕
-        
         
         TapGestureRecognizer *tap0 = [TapGestureRecognizer alloc];
         [tap0 init:self action:@selector(changeBrushColor:) tag:0];
@@ -164,7 +161,7 @@
         TapGestureRecognizer *tap3 = [TapGestureRecognizer alloc];
         [tap3 init:self action:@selector(changeBrushColor:) tag:3];
         a3 = [[UIButton alloc] initWithFrame:CGRectMake(19, 216, 30, 30)];
-          a3.showsTouchWhenHighlighted = YES;        
+        a3.showsTouchWhenHighlighted = YES;        
         a3.userInteractionEnabled = YES;
         [a3 addGestureRecognizer:tap3];
         [self.view addSubview:a3];        
@@ -180,7 +177,7 @@
         TapGestureRecognizer *tap5 = [TapGestureRecognizer alloc];
         [tap5 init:self action:@selector(changeBrushColor:) tag:5];
         a5 = [[UIButton alloc] initWithFrame:CGRectMake(19, 290, 30, 30)];
-             a5.showsTouchWhenHighlighted = YES;     
+        a5.showsTouchWhenHighlighted = YES;     
         a5.userInteractionEnabled = YES;
         [a5 addGestureRecognizer:tap5];
         [self.view addSubview:a5]; 
@@ -192,7 +189,7 @@
         a6.showsTouchWhenHighlighted = YES;  
         a6.userInteractionEnabled = YES;
         [a6 addGestureRecognizer:tap6];  
-         [self.view addSubview:a6];         
+        [self.view addSubview:a6];         
         
         
         TapGestureRecognizer *tap7 = [TapGestureRecognizer alloc];
@@ -201,7 +198,7 @@
         a7.showsTouchWhenHighlighted = YES;  
         a7.userInteractionEnabled = YES;
         [a7 addGestureRecognizer:tap7];   
-         [self.view addSubview:a7]; 
+        [self.view addSubview:a7]; 
         
         
         TapGestureRecognizer *tap8 = [TapGestureRecognizer alloc];
@@ -210,7 +207,7 @@
         a8.showsTouchWhenHighlighted = YES;  
         a8.userInteractionEnabled = YES;
         [a8 addGestureRecognizer:tap8]; 
-         [self.view addSubview:a8];         
+        [self.view addSubview:a8];         
         
         TapGestureRecognizer *tap9 = [TapGestureRecognizer alloc];
         [tap9 init:self action:@selector(changeBrushColor:) tag:9];
@@ -218,7 +215,7 @@
         a9.showsTouchWhenHighlighted = YES;  
         a9.userInteractionEnabled = YES;
         [a9 addGestureRecognizer:tap9];
-         [self.view addSubview:a9];         
+        [self.view addSubview:a9];         
         
         TapGestureRecognizer *tap10 = [TapGestureRecognizer alloc];
         [tap10 init:self action:@selector(changeBrushColor:) tag:10];
@@ -226,7 +223,7 @@
         a10.showsTouchWhenHighlighted = YES;  
         a10.userInteractionEnabled = YES;
         [a10 addGestureRecognizer:tap10];
-         [self.view addSubview:a10];         
+        [self.view addSubview:a10];         
         
         TapGestureRecognizer *tap11 = [TapGestureRecognizer alloc];
         [tap11 init:self action:@selector(changeBrushColor:) tag:11];
@@ -234,7 +231,7 @@
         a11.showsTouchWhenHighlighted = YES;  
         a11.userInteractionEnabled = YES;
         [a11 addGestureRecognizer:tap11];
-         [self.view addSubview:a11];         
+        [self.view addSubview:a11];         
         
         TapGestureRecognizer *tap12 = [TapGestureRecognizer alloc];
         [tap12 init:self action:@selector(changeBrushColor:) tag:12];
@@ -242,7 +239,7 @@
         a12.showsTouchWhenHighlighted = YES;  
         a12.userInteractionEnabled = YES;
         [a12 addGestureRecognizer:tap12]; 
-         [self.view addSubview:a12];         
+        [self.view addSubview:a12];         
         
         TapGestureRecognizer *tap13 = [TapGestureRecognizer alloc];
         [tap13 init:self action:@selector(changeBrushColor:) tag:13];
@@ -250,7 +247,7 @@
         a13.showsTouchWhenHighlighted = YES;  
         a13.userInteractionEnabled = YES;
         [a13 addGestureRecognizer:tap13];
-         [self.view addSubview:a13];         
+        [self.view addSubview:a13];         
         
         TapGestureRecognizer *tap14 = [TapGestureRecognizer alloc];
         [tap14 init:self action:@selector(changeBrushColor:) tag:14];
@@ -258,7 +255,7 @@
         a14.showsTouchWhenHighlighted = YES;  
         a14.userInteractionEnabled = YES;
         [a14 addGestureRecognizer:tap14];
-         [self.view addSubview:a14];         
+        [self.view addSubview:a14];         
         
         TapGestureRecognizer *tap15 = [TapGestureRecognizer alloc];
         [tap15 init:self action:@selector(changeBrushColor:) tag:15];
@@ -266,7 +263,7 @@
         a15.showsTouchWhenHighlighted = YES;  
         a15.userInteractionEnabled = YES;
         [a15 addGestureRecognizer:tap15];
-         [self.view addSubview:a15];         
+        [self.view addSubview:a15];         
         
         
         TapGestureRecognizer *tap16 = [TapGestureRecognizer alloc];
@@ -405,7 +402,7 @@
         TapGestureRecognizer *tap01 = [TapGestureRecognizer alloc];
         [tap01 init:self action:@selector(changeBrushtype:) tag:41];
         b1 = [[UIButton alloc] initWithFrame:CGRectMake(939, 136,85, 75)];
-   //sdds     [b1 setImage:[UIImage imageNamed:@"huabi1.png"] forState:UIControlStateNormal] ;
+        //sdds     [b1 setImage:[UIImage imageNamed:@"huabi1.png"] forState:UIControlStateNormal] ;
         b1.showsTouchWhenHighlighted = YES;  
         b1.userInteractionEnabled = YES;
         [b1 addGestureRecognizer:tap01];
@@ -414,7 +411,7 @@
         TapGestureRecognizer *tap02 = [TapGestureRecognizer alloc];
         [tap02 init:self action:@selector(changeBrushtype:) tag:42];
         b2 = [[UIButton alloc] initWithFrame:CGRectMake(939, 223, 85, 75)];
-  //       [b2 setImage:[UIImage imageNamed:@"huabi2.png"] forState:UIControlStateNormal] ;
+        //       [b2 setImage:[UIImage imageNamed:@"huabi2.png"] forState:UIControlStateNormal] ;
         b2.showsTouchWhenHighlighted = YES;  
         b2.userInteractionEnabled = YES;
         [b2 addGestureRecognizer:tap02]; 
@@ -423,7 +420,7 @@
         TapGestureRecognizer *tap03 = [TapGestureRecognizer alloc];
         [tap03 init:self action:@selector(changeBrushtype:) tag:43];
         b3 = [[UIButton alloc] initWithFrame:CGRectMake(939, 304, 85, 75)];
-  //       [b3 setImage:[UIImage imageNamed:@"huabi3.png"] forState:UIControlStateNormal] ;        
+        //       [b3 setImage:[UIImage imageNamed:@"huabi3.png"] forState:UIControlStateNormal] ;        
         b3.showsTouchWhenHighlighted = YES;  
         b3.userInteractionEnabled = YES;
         [b3 addGestureRecognizer:tap03];
@@ -432,7 +429,7 @@
         TapGestureRecognizer *tap04 = [TapGestureRecognizer alloc];
         [tap04 init:self action:@selector(changeBrushtype:) tag:44];
         b4 = [[UIButton alloc] initWithFrame:CGRectMake(939,394, 85, 75)];
- ///[b4 setImage:[UIImage imageNamed:@"huabi4.png"] forState:UIControlStateNormal] ;
+        ///[b4 setImage:[UIImage imageNamed:@"huabi4.png"] forState:UIControlStateNormal] ;
         
         b4.showsTouchWhenHighlighted = YES;  
         b4.userInteractionEnabled = YES;
@@ -442,7 +439,7 @@
         TapGestureRecognizer *tap05 = [TapGestureRecognizer alloc];
         [tap05 init:self action:@selector(changeBrushtype:) tag:45];
         b5 = [[UIButton alloc] initWithFrame:CGRectMake(939, 495, 85, 75)];
-      //  [b5 setImage:[UIImage imageNamed:@"huabi5.png"] forState:UIControlStateNormal] ; 
+        //  [b5 setImage:[UIImage imageNamed:@"huabi5.png"] forState:UIControlStateNormal] ; 
         b5.showsTouchWhenHighlighted = YES;  
         b5.userInteractionEnabled = YES;
         [b5 addGestureRecognizer:tap05];
@@ -451,49 +448,49 @@
         
         
         
-
-        
-        
-        UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:
-                                                [NSArray arrayWithObjects:
-                                                 @"Red",
-                                                 @"Yellow",
-                                                 @"Green",
-                                                 @"Blue",
-                                                 @"Purple",
-                                                 nil]];
-        CGRect frame = CGRectMake(939, 595, 85, 75);
-        segmentedControl.frame = frame;
-        [segmentedControl addTarget:self action:@selector(changeBrushColor:) forControlEvents:UIControlEventValueChanged];
-        segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-        segmentedControl.tintColor = [UIColor darkGrayColor];
-        segmentedControl.selectedSegmentIndex = 2;
-        [drawingView setBrushColorWithRed:0.0 green:1.0 blue:0.0 alpha:1.0];
-      //[self.view addSubview:segmentedControl];
-     //   [segmentedControl release];
         
         
         
+//        UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:
+//                                                [NSArray arrayWithObjects:
+//                                                 @"Red",
+//                                                 @"Yellow",
+//                                                 @"Green",
+//                                                 @"Blue",
+//                                                 @"Purple",
+//                                                 nil]];
+//        CGRect frame = CGRectMake(939, 595, 85, 75);
+//        segmentedControl.frame = frame;
+//        [segmentedControl addTarget:self action:@selector(changeBrushColor:) forControlEvents:UIControlEventValueChanged];
+//        segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+//        segmentedControl.tintColor = [UIColor darkGrayColor];
+//        segmentedControl.selectedSegmentIndex = 2;
+//        [drawingView setBrushColorWithRed:0.0 green:1.0 blue:0.0 alpha:1.0];
+        //[self.view addSubview:segmentedControl];
+        //   [segmentedControl release];
         
         
         
-        UISegmentedControl *segtyle = [[UISegmentedControl alloc] initWithItems:
-                                       [NSArray arrayWithObjects:
-                                        @"铅笔",
-                                        @"毛笔",
-                                        @"蜡笔",
-                                        @"粉笔",
-                                        @"钢笔",
-                                        nil]];
-        CGRect tframe = CGRectMake(80,750,600,40);
-        segtyle.frame = tframe;
-        [segtyle addTarget:self action:@selector(changeBrushtype:) forControlEvents:UIControlEventValueChanged];
-        segtyle.segmentedControlStyle = UISegmentedControlStyleBar;
-        segtyle.tintColor = [UIColor darkGrayColor];
-        segtyle.selectedSegmentIndex = 1;
-        [drawingView setBrushTypeWithtag:1];
-    // [self.view addSubview:segtyle];
-   //     [segtyle release];
+        
+        
+        
+//        UISegmentedControl *segtyle = [[UISegmentedControl alloc] initWithItems:
+//                                       [NSArray arrayWithObjects:
+//                                        @"铅笔",
+//                                        @"毛笔",
+//                                        @"蜡笔",
+//                                        @"粉笔",
+//                                        @"钢笔",
+//                                        nil]];
+//        CGRect tframe = CGRectMake(80,750,600,40);
+//        segtyle.frame = tframe;
+//        [segtyle addTarget:self action:@selector(changeBrushtype:) forControlEvents:UIControlEventValueChanged];
+//        segtyle.segmentedControlStyle = UISegmentedControlStyleBar;
+//        segtyle.tintColor = [UIColor darkGrayColor];
+//        segtyle.selectedSegmentIndex = 1;
+//        [drawingView setBrushTypeWithtag:1];
+        // [self.view addSubview:segtyle];
+        //     [segtyle release];
         
         
         //最下方5个按钮 
@@ -507,29 +504,29 @@
         //rebutton.backgroundColor = [UIColor lightGrayColor];
         //[rebutton setTitle:@"返回" forState:0];
         //添加图片
-      //  [rebutton setBackgroundImage:[UIImage imageNamed:@"return.png"] forState:UIControlStateNormal];
+        //  [rebutton setBackgroundImage:[UIImage imageNamed:@"return.png"] forState:UIControlStateNormal];
         rebutton.showsTouchWhenHighlighted = YES;
         [rebutton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchDown];
         rebutton.tag = 1;
         [self.view addSubview:rebutton]; 
-    //    [rebutton release];                
+        //    [rebutton release];                
         
-    /*    UIButton *colorbutton = [[UIButton alloc] init];
-        colorbutton.frame = CGRectMake(190, 940, 80, 80);   
-        //原大小：CGRectMake(190, 950, 95, 50);
-        //colorbutton.titleLabel.font = [UIFont boldSystemFontOfSize:24];
-        //[colorbutton setTitle:@"颜色" forState:0];
-        //[colorbutton.titleLabel setTextColor:[UIColor blueColor]];
-        //colorbutton.backgroundColor = [UIColor lightGrayColor];
-        
-     //   [colorbutton setBackgroundImage:[UIImage imageNamed:@"colors.png"] forState:UIControlStateNormal];
-        
-        colorbutton.showsTouchWhenHighlighted = YES;
-        [colorbutton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchDown];
-        colorbutton.tag = 2;
-       // [self.view addSubview:colorbutton]; 
-   //     [colorbutton release];
-*/
+        /*    UIButton *colorbutton = [[UIButton alloc] init];
+         colorbutton.frame = CGRectMake(190, 940, 80, 80);   
+         //原大小：CGRectMake(190, 950, 95, 50);
+         //colorbutton.titleLabel.font = [UIFont boldSystemFontOfSize:24];
+         //[colorbutton setTitle:@"颜色" forState:0];
+         //[colorbutton.titleLabel setTextColor:[UIColor blueColor]];
+         //colorbutton.backgroundColor = [UIColor lightGrayColor];
+         
+         //   [colorbutton setBackgroundImage:[UIImage imageNamed:@"colors.png"] forState:UIControlStateNormal];
+         
+         colorbutton.showsTouchWhenHighlighted = YES;
+         [colorbutton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchDown];
+         colorbutton.tag = 2;
+         // [self.view addSubview:colorbutton]; 
+         //     [colorbutton release];
+         */
         
         UIButton *easebutton = [[UIButton alloc] init];
         easebutton.frame = CGRectMake(393, 495, 85, 75);
@@ -538,14 +535,14 @@
         //easebutton.backgroundColor = [UIColor lightGrayColor];
         //[easebutton setTitle:@"清空" forState:0];
         
-       // [easebutton setBackgroundImage:[UIImage imageNamed:@"erase.png"] forState:UIControlStateNormal];
+        // [easebutton setBackgroundImage:[UIImage imageNamed:@"erase.png"] forState:UIControlStateNormal];
         
-         easebutton.showsTouchWhenHighlighted = YES;
+        easebutton.showsTouchWhenHighlighted = YES;
         [easebutton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchDown];
-         easebutton.tag = 3;
-     //    [self.view addSubview:easebutton]; 
-   //     [easebutton release];
-
+        easebutton.tag = 3;
+        //    [self.view addSubview:easebutton]; 
+        //     [easebutton release];
+        
         
         UIButton *selectbutton = [[UIButton alloc] init];
         selectbutton.frame = CGRectMake(774, 40, 40,40);
@@ -554,13 +551,13 @@
         //selectbutton.backgroundColor = [UIColor lightGrayColor];
         //[selectbutton setTitle:@"选择" forState:0];
         
-      //  [selectbutton setBackgroundImage:[UIImage imageNamed:@"choose.png"] forState:UIControlStateNormal];
+        //  [selectbutton setBackgroundImage:[UIImage imageNamed:@"choose.png"] forState:UIControlStateNormal];
         
         selectbutton.showsTouchWhenHighlighted = YES;
         [selectbutton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchDown];
         selectbutton.tag = 4;
         [self.view addSubview:selectbutton]; 
-     //   [selectbutton release];
+        //   [selectbutton release];
         
         UIButton *cabutton = [[UIButton alloc] init];
         cabutton.frame = CGRectMake(939, 595, 105, 75);
@@ -569,13 +566,13 @@
         //cabutton.backgroundColor = [UIColor lightGrayColor];
         //[cabutton setTitle:@"擦除" forState:0];
         
-       // [cabutton setBackgroundImage:[UIImage imageNamed:@"ca.png"] forState:UIControlStateNormal];
+        // [cabutton setBackgroundImage:[UIImage imageNamed:@"ca.png"] forState:UIControlStateNormal];
         
         cabutton.showsTouchWhenHighlighted = YES;
         [cabutton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchDown];
         cabutton.tag = 5;
         [self.view addSubview:cabutton]; 
-     //   [cabutton release];
+        //   [cabutton release];
         
         
         UIButton *savebutton = [[UIButton alloc] init];
@@ -593,7 +590,7 @@
         [self.view addSubview:savebutton]; 
         
         
-
+        
     }
     return self;
 }
@@ -611,19 +608,19 @@
     // gl renders "upside down" so swap top to bottom into new array.
     // there's gotta be a better way, but this works.
     GLubyte *buffer2 = (GLubyte *) malloc(myDataLength);
-  
+    
     for(int y = 0; y <768; y++)
     {
         for(int x = 0; x <1024 * 4; x++)
         {
             if(buffer[y * 4 * 1024 + x]!=0)
             {
-            buffer2[(767 - y) * 1024 * 4 + x] = buffer[y * 4 * 1024 + x];
+                buffer2[(767 - y) * 1024 * 4 + x] = buffer[y * 4 * 1024 + x];
             }
             else {
                 buffer2[(767 - y) * 1024 * 4 + x]=0;
             }
-           
+            
         }
     }
     
@@ -645,8 +642,8 @@
     UIImage *myImage = [UIImage imageWithCGImage:imageRef];
     return myImage;
 }  
-   
-    
+
+
 
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo; 
@@ -654,18 +651,18 @@
 {
     
     if (!error) 
-        {
-            UIAlertView *alert1=[[UIAlertView alloc] initWithTitle:nil message:@"保存图片成功" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert1 show];
-        }
-        
+    {
+        UIAlertView *alert1=[[UIAlertView alloc] initWithTitle:nil message:@"保存图片成功" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert1 show];
+    }
+    
     
     else
     {
         UIAlertView *alert2=[[UIAlertView alloc] initWithTitle:nil message:@"保存图片失败" delegate:self cancelButtonTitle:@"error" otherButtonTitles:nil];
         [alert2 show];
     }
-     
+    
     
 }
 
@@ -676,63 +673,57 @@
     switch (btn.tag)
     {
         case 1:
+            
             //[(ViewController*)CBAppDelegate.viewController  dismissModalViewControllerAnimated:YES];
+            [self.view removeFromSuperview];
+            [[CCDirector sharedDirector] replaceScene:[Page1 scene]];
+            [[CCDirector sharedDirector] startAnimation];
             break;
         case 2:
             
         {
-            
-            
-            
-         
-                               
             UIImage *image = [self glToUIImage];
             
-            
-         /*  UIImage  *frontImage =backView.image; 
-            UIGraphicsBeginImageContext(self.view.bounds.size);  
-            [frontImage drawAtPoint:CGPointMake(0,0)];  
-            [image drawAtPoint:CGPointMake(0,0)];  
-         //   UIImage *image = UIGraphicsGetImageFromCurrentImageContext();  
-            UIGraphicsEndImageContext();
-          
-          */
-       //     [drawingView addSubview:[[UIImageView alloc] initWithImage:image]];
-        
+            /*  UIImage  *frontImage =backView.image; 
+             UIGraphicsBeginImageContext(self.view.bounds.size);  
+             [frontImage drawAtPoint:CGPointMake(0,0)];  
+             [image drawAtPoint:CGPointMake(0,0)];  
+             //   UIImage *image = UIGraphicsGetImageFromCurrentImageContext();  
+             UIGraphicsEndImageContext();
              
-    
-     
+             */
+            //     [drawingView addSubview:[[UIImageView alloc] initWithImage:image]];
             
-       /*   CGRect rect =drawingView.frame;            
-      //    CGRect rect = self.view.frame;
-            UIGraphicsBeginImageContext(rect.size);
-            CGContextRef context =UIGraphicsGetCurrentContext();
-        
-            [drawingView.layer renderInContext:context];
-            UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();            
-*/
-                    
-         
-     UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-         
-               
+            /*   CGRect rect =drawingView.frame;            
+             //    CGRect rect = self.view.frame;
+             UIGraphicsBeginImageContext(rect.size);
+             CGContextRef context =UIGraphicsGetCurrentContext();
+             
+             [drawingView.layer renderInContext:context];
+             UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+             UIGraphicsEndImageContext();            
+             */
+            
+            
+            UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+            
+            
             // create the ColorPicker with iPad layout
-       /*     ColorPicker *picker=[[ColorPicker alloc] initWithNibName:@"ColorPicker_iPad" bundle:nil Tag:1 Color:color];
-            if(picker)
-            {
-                // set delegate
-                picker.delegate=self;
-                // and create PopoverController
-                popoverController=[[UIPopoverController alloc] initWithContentViewController:picker];
-                popoverController.delegate=self;
-                [popoverController setPopoverContentSize:CGSizeMake(430, 435)];
-                picker.popOver=popoverController;
-                // and show it next to our Button
-                [popoverController presentPopoverFromRect:btn.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-            }
-        //    [picker release], 
-            picker=nil;*/
+            /*     ColorPicker *picker=[[ColorPicker alloc] initWithNibName:@"ColorPicker_iPad" bundle:nil Tag:1 Color:color];
+             if(picker)
+             {
+             // set delegate
+             picker.delegate=self;
+             // and create PopoverController
+             popoverController=[[UIPopoverController alloc] initWithContentViewController:picker];
+             popoverController.delegate=self;
+             [popoverController setPopoverContentSize:CGSizeMake(430, 435)];
+             picker.popOver=popoverController;
+             // and show it next to our Button
+             [popoverController presentPopoverFromRect:btn.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+             }
+             //    [picker release], 
+             picker=nil;*/
             break;
         }
         case 3:
@@ -746,37 +737,37 @@
             {
                 imageNum=1;
             }
-           backView.image = [UIImage imageNamed:[NSString stringWithFormat:@"hbg%d.png",imageNum]];
-           smallView.image = [UIImage imageNamed:[NSString stringWithFormat:@"hbg%d.png",imageNum]];
-           [drawingView erase];
+            backView.image = [UIImage imageNamed:[NSString stringWithFormat:@"hbg%d.png",imageNum]];
+            smallView.image = [UIImage imageNamed:[NSString stringWithFormat:@"hbg%d.png",imageNum]];
+            [drawingView erase];
             break;
         }
         case 5:
         { 
             [drawingView changeBlendMode:YES];
             [drawingView setBrushColorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
-          
+            
             break;
         }
-      
+            
         default:
             break;
     }
- 
+    
 }
 - (void)changeBrushtype:(id)sender
 {
     [drawingView changeBlendMode:NO];
-   // UISegmentedControl *seg = (UISegmentedControl*)sender;
+    // UISegmentedControl *seg = (UISegmentedControl*)sender;
     TapGestureRecognizer *tap = (TapGestureRecognizer*)sender;
     int tag = tap.tag;  
     switch (tag)
     {
         case 41:
-             [drawingView setBrushTypeWithtag:0];
+            [drawingView setBrushTypeWithtag:0];
             break;
         case 42:
-             [drawingView setBrushTypeWithtag:1];
+            [drawingView setBrushTypeWithtag:1];
             break;   
         case 43:
             [drawingView setBrushTypeWithtag:2];
@@ -797,7 +788,7 @@
 - (void)changeBrushColor:(id)sender
 {
     [drawingView changeBlendMode:NO];
-   // UISegmentedControl *seg = (UISegmentedControl*)sender;
+    // UISegmentedControl *seg = (UISegmentedControl*)sender;
     
     TapGestureRecognizer *tap = (TapGestureRecognizer*)sender;
     int tag = tap.tag;
@@ -814,7 +805,7 @@
             break;
         case 2:
             [drawingView setBrushColorWithRed:(float)227/255 green:(float)85/255 blue:(float)106/255 alpha:1.0];
-       
+            
             break;
         case 3:
             [drawingView setBrushColorWithRed:(float)218/255 green:(float)37/255 blue:(float)29/255 alpha:1.0];
@@ -984,8 +975,11 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);    
+    //return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);    
 	//return (interfaceOrientation==UIInterfaceOrientationPortrait  || interfaceOrientation==UIInterfaceOrientationPortraitUpsideDown);
+    //return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+
 }
 
 @end

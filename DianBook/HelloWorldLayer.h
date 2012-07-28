@@ -15,6 +15,8 @@
 #import "Animate.h"
 
 //每添加一页在此加入一个@class PageX
+
+@class  Loading;
 @class  Page1;
 @class  Page2;
 @class  Page3;
@@ -33,7 +35,10 @@
 {
     CCSprite * selSprite;
     NSMutableArray * movableSprites;
-    int         thisPageCount;         //本页的页数，初始化为零 表示封面    
+    int         thisPageCount;         //本页的页数，初始化为零 表示封面 
+    
+    CGSize globalWinSize;                       //保存窗口大小
+    NSMutableArray * soundIds;                  //保存播放音效留下来的 soundID
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child

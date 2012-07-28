@@ -42,9 +42,11 @@
 
 -(id) init
 {
+    CCLOG(@"%@ : %@", NSStringFromSelector(_cmd), self);
+    
 	if((self = [super init])) {        
         //获取窗口大小
-        CGSize winSize = [CCDirector sharedDirector].winSize;
+        globalWinSize = [[CCDirector sharedDirector] winSize];
         
         //初始化按钮数组
         //左翻页tag = 1 ，右翻页tag = 2 。在 selectSpriteForTouch 函数中判断用
@@ -52,13 +54,13 @@
         
         //左翻页
         CCSprite *buttonLeft = [CCSprite spriteWithFile:@"page_left.png"];
-        buttonLeft.position = ccp(winSize.width * 0.05, winSize.height * 0.95);
+        buttonLeft.position = ccp(globalWinSize.width * 0.05, globalWinSize.height * 0.95);
         buttonLeft.tag = 1;
         [self addChild:buttonLeft z:10];
         [movableSprites addObject:buttonLeft ];
         //右翻页
         CCSprite *buttonRight = [CCSprite spriteWithFile:@"page_right.png"];
-        buttonRight.position = ccp(winSize.width * 0.95, winSize.height * 0.95);
+        buttonRight.position = ccp(globalWinSize.width * 0.95, globalWinSize.height * 0.95);
         buttonRight.tag = 2;
         [self addChild:buttonRight z:10];
         [movableSprites addObject:buttonRight ];
@@ -67,13 +69,13 @@
         thisPageCount = 1;
         
         CCSprite *coverFLow = [CCSprite spriteWithFile:@"page_home.png"];
-        coverFLow.position = ccp(winSize.width * 0.5, winSize.height * 0.95);
+        coverFLow.position = ccp(globalWinSize.width * 0.5, globalWinSize.height * 0.95);
         coverFLow.tag = 3;
         [self addChild:coverFLow z:10];
         [movableSprites addObject:coverFLow];
         
         CCSprite *arcade = [CCSprite spriteWithFile:@"arcade.png"];
-        arcade.position = ccp(winSize.width * 0.05, winSize.height * 0.05);
+        arcade.position = ccp(globalWinSize.width * 0.05, globalWinSize.height * 0.05);
         arcade.tag = 4;
         [self addChild:arcade z:10];
         [movableSprites addObject:arcade];
@@ -90,31 +92,28 @@
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
+    CCLOG(@"%@ : %@", NSStringFromSelector(_cmd), self);
     //记得在此释放资源
 	//先 release方法，再赋值 nil
-    
 	// don't forget to call "super dealloc"
     [selSprite release];
     selSprite = nil;
-    
     [movableSprites release];
     movableSprites = nil;
-    //  [super dealloc];
-    
+    [super dealloc];
 }
 
 #pragma mark Scenes
 //重写须修改scene
 //场景切换函数：下一页
--(void) nextPage:(int)thisPageCount{
-    // NSLog(@"nextPage");
+-(void) nextPage:(int)thisPageCount
+{
     //此处等待重写
     //每个Page的下一个Page
 }
 //场景切换函数：上一页
 -(void) prevPage:(int)thisPageCount
-{
-    //  NSLog(@"prevPage");    
+{  
     //此处等待重写
     //每个Page的上一个Page
 }
@@ -122,7 +121,7 @@
 #pragma mark Touch matics
 //精灵的点击
 - (void)selectSpriteForTouch:(CGPoint)touchLocation {
-    NSLog(@"touch1");
+    CCLOG(@"Touched");
     CCSprite * newSprite = nil;
     //循环到点击的那个精灵，返回给newSprit
     int i=1;
@@ -140,7 +139,7 @@
     }
     
     if(selSprite.tag == 1){
-        debuglog(@"touched left:%d");
+        CCLOG(@"touched left:%d");
         //加条件判句
         if(thisPageCount >0){
             thisPageCount --;
@@ -177,6 +176,7 @@
 - (void) enterCoverFlow
 {
     //停止cocos2d视图
+    
     [[CCDirector sharedDirector] stopAnimation];
     //进入coverflow
     CoverflowViewController *cf;
@@ -189,14 +189,19 @@
 
 - (void) enterGame 
 {
-    //停止cocos2d视图
-    [[CCDirector sharedDirector] stopAnimation];
+    //载入等待场景
+    [[CCDirector sharedDirector] replaceScene:[Loading scene]];
+    
     //载入画图游戏
     PainterViewController *patinter;
     patinter = [[PainterViewController alloc] initWithNibName:@"PainterViewController" bundle:nil];
-    [[[[CCDirector sharedDirector] view] window] addSubview:patinter.view];    
+    [[[CCDirector sharedDirector] view] addSubview:patinter.view]; 
+    
     //释放View
     [patinter.view release];
+    
+    //停止cocos2d视图
+    [[CCDirector sharedDirector] stopAnimation];
 }
 
 

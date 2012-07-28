@@ -43,11 +43,11 @@
 		//	[self release];
 			return nil;
 		}
-      // self.bounds = CGRectMake(175,145, 720, 490);
+        //self.bounds = CGRectMake(0,0,0, 0);
         // Set the view's scale factor
 		self.contentScaleFactor = 1.0;
         
-       self.layer.frame=CGRectMake(175,145, 720, 490);	
+       self.layer.frame=CGRectMake(0, 0, 1024, 768);	
 		// Setup OpenGL states
 		glMatrixMode(GL_PROJECTION);
 		CGRect frame = self.bounds;
@@ -360,19 +360,19 @@
 {
     switch (tag) {
         case 0:
-           brushfile = @"Particle.png";
+           brushfile = @"Particle.png";  //铅笔
             break;
         case 1:
-            brushfile = @"p.png";
+            brushfile = @"p.png";        //毛笔
             break;
         case 2:
-            brushfile = @"pi.png";
+            brushfile = @"pi.png";       //蜡笔
             break;
         case 3:
-            brushfile = @"pin.png";
+            brushfile = @"pin.png";      //粉笔
             break;
         case 4:
-            brushfile = @"ping.png";
+            brushfile = @"ping.png";     //钢笔
             break;
         default:
             break;
